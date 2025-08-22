@@ -13,8 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interface\Clients\" />
-    <Folder Include="Interface\Services\" />
     <Folder Include="Mappers\Dto\" />
     <Folder Include="Mappers\Entity\" />
     <Folder Include="Services\" />
