@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>GNW_Bazaar.Core</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GNW-Bazzar.Dto\GNW-Bazzar.Dto.csproj" />
+    <ProjectReference Include="..\GNW-Bazzar.Infra\GNW-Bazzar.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interface\Clients\" />
+    <Folder Include="Interface\Services\" />
+    <Folder Include="Mappers\Dto\" />
+    <Folder Include="Mappers\Entity\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
