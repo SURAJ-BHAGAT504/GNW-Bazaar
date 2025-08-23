@@ -8,11 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GNW-Bazaar.Core\GNW-Bazaar.Core.csproj" />
     <ProjectReference Include="..\GNW-Bazzar.Entity\GNW-Bazzar.Entity.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Clients\" />
   </ItemGroup>
 
 </Project>

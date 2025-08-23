@@ -9,13 +9,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GNW-Bazzar.Dto\GNW-Bazzar.Dto.csproj" />
-    <ProjectReference Include="..\GNW-Bazzar.Infra\GNW-Bazzar.Infra.csproj" />
+    <ProjectReference Include="..\GNW-Bazzar.Entity\GNW-Bazzar.Entity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mappers\Dto\" />
-    <Folder Include="Mappers\Entity\" />
-    <Folder Include="Services\" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

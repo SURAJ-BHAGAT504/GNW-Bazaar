@@ -10,7 +10,7 @@ namespace GNW_Bazzar.Entity
         public long HealthCareCategoryId { get; set; }
         [Required]
         public DateTime CreatedOn { get; set; }
-        public DateTime? UpdatedBy { get; set; }
+        public DateTime? UpdatedOn { get; set; }
 
         public HealthCareCategory HealthCareCategory { get; set; } = default!;
     }

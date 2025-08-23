@@ -8,7 +8,7 @@ namespace GNW_Bazzar.Entity
         public string Category { get; set; } = default!;
         [Required]
         public DateTime CreatedOn { get; set; }
-        public DateTime? UpdatedBy { get; set; }
+        public DateTime? UpdatedOn { get; set; }
 
         public ICollection<HealthCareSubCategory> HealthCareSubCategories { get; set; } = default!;
     }

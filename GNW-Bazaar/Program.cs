@@ -1,14 +1,26 @@
+using GNW_Bazaar.Core.Interface;
+using GNW_Bazaar.Core.Interface.Clients;
+using GNW_Bazaar.Core.Interface.Services;
+using GNW_Bazaar.Core.Mappers.Dto;
+using GNW_Bazaar.Core.Mappers.Entity;
+using GNW_Bazaar.Core.Services;
+using GNW_Bazzar.Dto;
 using GNW_Bazzar.Entity;
+using GNW_Bazzar.Infra.Clients;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IValidationClient, ValidationClient>();
+
+builder.Services.AddScoped<IMasterDataService<HealthCareCategoryDto>, HealthCareCategoryService>();
+builder.Services.AddScoped<IMasterDataClient<HealthCareCategory>, HealthCareCategoryClient>();
+builder.Services.AddScoped<IMapper<HealthCareCategoryDto, HealthCareCategory>, HealthCareCategoryMapper>();
+builder.Services.AddScoped<IMapper<HealthCareCategory, HealthCareCategoryDto>, HealthCareCategoryDtoMapper>();
 
 builder.Services.AddDbContext<GNW_BazaarDbContext>(Options =>
 {
@@ -17,7 +29,6 @@ builder.Services.AddDbContext<GNW_BazaarDbContext>(Options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

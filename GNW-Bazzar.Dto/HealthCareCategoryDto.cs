@@ -8,6 +8,6 @@ namespace GNW_Bazzar.Dto
         public string Category { get; set; } = default!;
         [Required]
         public DateTime CreatedOn { get; set; }
-        public DateTime? UpdatedBy { get; set; }
+        public DateTime? UpdatedOn { get; set; }
     }
 }
