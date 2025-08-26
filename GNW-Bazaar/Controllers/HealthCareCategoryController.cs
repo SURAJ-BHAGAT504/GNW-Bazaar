@@ -34,5 +34,31 @@ namespace GNW_Bazaar.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(HealthCareCategoryDto healthCareCategoryDto)
+        {
+            try
+            {
+                return Ok(JsonSerializer.Serialize(await healthCareCategoryService.Create(healthCareCategoryDto)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(HealthCareCategoryDto healthCareCategoryDto)
+        {
+            try
+            {
+                return Ok(JsonSerializer.Serialize(await healthCareCategoryService.Update(healthCareCategoryDto)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
