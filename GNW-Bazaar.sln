@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GNW-Bazaar", "GNW-Bazaar\GNW-Bazaar.csproj", "{429244E1-A27F-4A02-8EDA-91B0518E05E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GNW_Bazaar_HealthCare", "GNW-Bazaar\GNW_Bazaar_HealthCare.csproj", "{429244E1-A27F-4A02-8EDA-91B0518E05E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GNW-Bazaar.Core", "GNW-Bazaar.Core\GNW-Bazaar.Core.csproj", "{C87D3849-EB96-40D2-A373-A40AD3DD4578}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GNW-Bazzar.Entity", "GNW-Bazzar.Entity\GNW-Bazzar.Entity.csproj", "{546AE34F-DD6A-4FAD-9B58-BDD7EB345C09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GNW-Bazzar.Infra", "GNW-Bazzar.Infra\GNW-Bazzar.Infra.csproj", "{3002E6C2-3EF4-426C-AC63-A00D30DF798E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GNW_Bazaar", "GNW_Bazaar", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateWay", "ApiGateWay", "{8DCF9F4E-547D-44F5-B4A7-B14B5C31A7AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{944FF754-957C-4606-A4BB-C3620B1A0ADA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +45,17 @@ Global
 		{3002E6C2-3EF4-426C-AC63-A00D30DF798E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3002E6C2-3EF4-426C-AC63-A00D30DF798E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3002E6C2-3EF4-426C-AC63-A00D30DF798E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{944FF754-957C-4606-A4BB-C3620B1A0ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944FF754-957C-4606-A4BB-C3620B1A0ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944FF754-957C-4606-A4BB-C3620B1A0ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944FF754-957C-4606-A4BB-C3620B1A0ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{429244E1-A27F-4A02-8EDA-91B0518E05E1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{944FF754-957C-4606-A4BB-C3620B1A0ADA} = {8DCF9F4E-547D-44F5-B4A7-B14B5C31A7AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {763BB717-D01E-40AD-938D-A5C753368F3D}
