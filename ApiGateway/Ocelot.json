@@ -12,6 +12,7 @@
       "UpstreamPathTemplate": "/GetAll_HealthCare_Category",
       "UpstreamHttpMethod": [ "Get" ]
     },
+
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Get?id={id}",
       "DownstreamScheme": "https",
@@ -24,6 +25,7 @@
       "UpstreamPathTemplate": "/Get_HealthCare_Category/{id}",
       "UpstreamHttpMethod": [ "Get" ]
     },
+
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Create",
       "DownstreamScheme": "https",
@@ -36,6 +38,7 @@
       "UpstreamPathTemplate": "/Create_HealthCare_Category",
       "UpstreamHttpMethod": [ "Post" ]
     },
+
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Update",
       "DownstreamScheme": "https",

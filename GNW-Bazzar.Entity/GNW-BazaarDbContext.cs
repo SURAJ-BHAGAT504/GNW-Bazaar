@@ -5,6 +5,8 @@ namespace GNW_Bazzar.Entity
     public class GNW_BazaarDbContext(DbContextOptions<GNW_BazaarDbContext> options) : DbContext(options)
     {
         public DbSet<HealthCareCategory> HealthCareCategories { get; set; }
+        public DbSet<HealthCareSubCategory> HealthCareSubCategories { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

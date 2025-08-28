@@ -1,0 +1,6 @@
+@GNW_Bazaar_SignupAndLogin_HostAddress = http://localhost:5001
+
+GET {{GNW_Bazaar_SignupAndLogin_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

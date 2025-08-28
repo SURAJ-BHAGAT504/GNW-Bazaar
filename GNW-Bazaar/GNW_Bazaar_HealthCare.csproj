@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GNW-Bazaar.Core\GNW-Bazaar.Core.csproj" />
     <ProjectReference Include="..\GNW-Bazzar.Infra\GNW-Bazzar.Infra.csproj" />
+    <ProjectReference Include="..\GNW_Bazaar_SignupAndLogin\GNW_Bazaar_SignupAndLogin.csproj" />
   </ItemGroup>
 
 </Project>
