@@ -7,9 +7,10 @@ namespace GNW_Bazzar.Entity
         [Required]
         public string UserId { get; set; } = default!;
         [Required]
-        public string Token { get; set; }= default!;
+        public string Token { get; set; } = default!;
         [Required]
-        public DateTime CreationDate { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; }
         [Required]
         public DateTime ExpiryDate { get; set; }
 

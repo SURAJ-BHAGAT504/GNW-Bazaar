@@ -47,7 +47,8 @@ namespace GNW_Bazaar.Core.Services
             {
                 UserId = userId,
                 Token = refreshTokenString,
-                CreationDate = DateTime.UtcNow,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = null,
                 ExpiryDate = DateTime.UtcNow.AddDays(7)
             };
 

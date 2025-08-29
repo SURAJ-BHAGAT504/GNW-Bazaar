@@ -9,7 +9,8 @@ namespace GNW_Bazzar.Dto
         [Required]
         public string Token { get; set; } = default!;
         [Required]
-        public DateTime CreationDate { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; }
         [Required]
         public DateTime ExpiryDate { get; set; }
     }

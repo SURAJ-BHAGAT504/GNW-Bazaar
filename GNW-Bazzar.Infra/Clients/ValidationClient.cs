@@ -8,5 +8,8 @@ namespace GNW_Bazzar.Infra.Clients
     {
         public async Task<HealthCareCategory?> GetHealthCareCategory(string category) =>
             await dbContext.HealthCareCategories.Where(h => h.Category == category).FirstOrDefaultAsync();
+
+        public async Task<RefreshToken?> GetRefreshToken(string token) =>
+            await dbContext.RefreshTokens.Where(t => t.Token == token).FirstOrDefaultAsync();
     }
 }
