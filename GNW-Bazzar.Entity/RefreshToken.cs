@@ -5,7 +5,7 @@ namespace GNW_Bazzar.Entity
     public class RefreshToken : Base
     {
         [Required]
-        public string UserId { get; set; } = default!;
+        public long UserId { get; set; } = default!;
         [Required]
         public string Token { get; set; } = default!;
         [Required]
@@ -14,6 +14,6 @@ namespace GNW_Bazzar.Entity
         [Required]
         public DateTime ExpiryDate { get; set; }
 
-        public int MyProperty { get; set; }
+        public User User { get; set; } = default!;
     }
 }

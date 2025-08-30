@@ -9,7 +9,7 @@ using System.Net;
 
 namespace GNW_Bazaar.Core.Services
 {
-    public class RefreshTokenService(ILogger logger, IRefreshTokenClient refreshTokenClient, IValidationClient validationClient,
+    public class RefreshTokenService(ILogger<RefreshTokenService> logger, IRefreshTokenClient refreshTokenClient, IValidationClient validationClient,
         IMapper<RefreshTokenDto, RefreshToken> refreshTokenMapper, IMapper<RefreshToken, RefreshTokenDto> refreshTokenDtoMapper) : IRefreshTokenService
     {
         public async Task<ResponseDto<long>> Create(RefreshTokenDto entity)

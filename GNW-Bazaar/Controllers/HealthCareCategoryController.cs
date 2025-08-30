@@ -1,5 +1,6 @@
 ﻿using GNW_Bazaar.Core.Interface.Services;
 using GNW_Bazzar.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -10,6 +11,7 @@ namespace GNW_Bazaar.Controllers
     public class HealthCareCategoryController(IMasterDataService<HealthCareCategoryDto> healthCareCategoryService) : ControllerBase
     {
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -23,6 +25,7 @@ namespace GNW_Bazaar.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Get(long id)
         {
             try
@@ -36,6 +39,7 @@ namespace GNW_Bazaar.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(HealthCareCategoryDto healthCareCategoryDto)
         {
             try
@@ -49,6 +53,7 @@ namespace GNW_Bazaar.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Update(HealthCareCategoryDto healthCareCategoryDto)
         {
             try

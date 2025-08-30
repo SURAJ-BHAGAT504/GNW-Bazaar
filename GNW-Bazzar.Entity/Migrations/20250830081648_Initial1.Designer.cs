@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GNW_Bazzar.Entity.Migrations
 {
     [DbContext(typeof(GNW_BazaarDbContext))]
-    [Migration("20250829101109_Initial")]
-    partial class Initial
+    [Migration("20250830081648_Initial1")]
+    partial class Initial1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,217 +53,217 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 1L,
                             Category = "Anaesthesiology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5193)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6938)
                         },
                         new
                         {
                             Id = 2L,
                             Category = "Cardiology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5197)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6947)
                         },
                         new
                         {
                             Id = 3L,
                             Category = "Critical Care",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5198)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6950)
                         },
                         new
                         {
                             Id = 4L,
                             Category = "Dentistry",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5199)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6952)
                         },
                         new
                         {
                             Id = 5L,
                             Category = "Dermatology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5200)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6954)
                         },
                         new
                         {
                             Id = 6L,
                             Category = "Endocrinology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5201)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6956)
                         },
                         new
                         {
                             Id = 7L,
                             Category = "ENT",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5202)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6958)
                         },
                         new
                         {
                             Id = 8L,
                             Category = "Gastroenterology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5204)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6960)
                         },
                         new
                         {
                             Id = 9L,
                             Category = "General Physician",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5205)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6964)
                         },
                         new
                         {
                             Id = 10L,
                             Category = "General Surgery",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5206)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6966)
                         },
                         new
                         {
                             Id = 11L,
                             Category = "Geriatrics",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5207)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6968)
                         },
                         new
                         {
                             Id = 12L,
                             Category = "Gynecology & Obstetrics",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5208)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6970)
                         },
                         new
                         {
                             Id = 13L,
                             Category = "Hematology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5209)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6972)
                         },
                         new
                         {
                             Id = 14L,
                             Category = "Hepatology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5210)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6974)
                         },
                         new
                         {
                             Id = 15L,
                             Category = "Immunology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5211)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6976)
                         },
                         new
                         {
                             Id = 16L,
                             Category = "Infectious Diseases",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5212)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6980)
                         },
                         new
                         {
                             Id = 17L,
                             Category = "Internal Medicine",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5213)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6982)
                         },
                         new
                         {
                             Id = 18L,
                             Category = "Interventional Spine & Pain Medicine",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5215)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6984)
                         },
                         new
                         {
                             Id = 19L,
                             Category = "IVF",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5216)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6986)
                         },
                         new
                         {
                             Id = 20L,
                             Category = "Nephrology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5217)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6988)
                         },
                         new
                         {
                             Id = 21L,
                             Category = "Neurology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5218)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6990)
                         },
                         new
                         {
                             Id = 22L,
                             Category = "Nuclear Medicine",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5219)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6992)
                         },
                         new
                         {
                             Id = 23L,
                             Category = "Nutrition & Health",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5220)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6994)
                         },
                         new
                         {
                             Id = 24L,
                             Category = "Oncology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5221)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(6996)
                         },
                         new
                         {
                             Id = 25L,
                             Category = "Ophthalmology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5222)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7000)
                         },
                         new
                         {
                             Id = 26L,
                             Category = "Orthopedics",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5224)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7002)
                         },
                         new
                         {
                             Id = 27L,
                             Category = "Pathology & Laboratory Medicine",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5226)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7004)
                         },
                         new
                         {
                             Id = 28L,
                             Category = "Pediatrics",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5227)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7006)
                         },
                         new
                         {
                             Id = 29L,
                             Category = "Physiotherapy & Rehabilitation",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5228)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7007)
                         },
                         new
                         {
                             Id = 30L,
                             Category = "Plastic & Reconstructive Surgery",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5229)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7009)
                         },
                         new
                         {
                             Id = 31L,
                             Category = "Psychology & Psychiatry",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5230)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7012)
                         },
                         new
                         {
                             Id = 32L,
                             Category = "Pulmonology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5231)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7014)
                         },
                         new
                         {
                             Id = 33L,
                             Category = "Radiology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5232)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7018)
                         },
                         new
                         {
                             Id = 34L,
                             Category = "Rheumatology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5233)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7020)
                         },
                         new
                         {
                             Id = 35L,
                             Category = "Robotic Surgery",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5234)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7022)
                         },
                         new
                         {
                             Id = 36L,
                             Category = "Urology",
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5235)
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7024)
                         });
                 });
 
@@ -299,203 +299,203 @@ namespace GNW_Bazzar.Entity.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5425),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7375),
                             HealthCareCategoryId = 2L,
                             SubCategory = "Heart"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5427),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7379),
                             HealthCareCategoryId = 6L,
                             SubCategory = "Hormones"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5429),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7382),
                             HealthCareCategoryId = 6L,
                             SubCategory = "Diabetes"
                         },
                         new
                         {
                             Id = 4L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5430),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7384),
                             HealthCareCategoryId = 6L,
                             SubCategory = "Thyroid"
                         },
                         new
                         {
                             Id = 5L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5431),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7388),
                             HealthCareCategoryId = 7L,
                             SubCategory = "Ear"
                         },
                         new
                         {
                             Id = 6L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5433),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7390),
                             HealthCareCategoryId = 7L,
                             SubCategory = "Nose"
                         },
                         new
                         {
                             Id = 7L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5434),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7393),
                             HealthCareCategoryId = 7L,
                             SubCategory = "Throat"
                         },
                         new
                         {
                             Id = 8L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5435),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7395),
                             HealthCareCategoryId = 8L,
                             SubCategory = "Digestive System"
                         },
                         new
                         {
                             Id = 9L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5437),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7397),
                             HealthCareCategoryId = 9L,
                             SubCategory = "Family Medicine"
                         },
                         new
                         {
                             Id = 10L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5438),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7399),
                             HealthCareCategoryId = 11L,
                             SubCategory = "Elderly Care"
                         },
                         new
                         {
                             Id = 11L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5439),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7401),
                             HealthCareCategoryId = 13L,
                             SubCategory = "Blood"
                         },
                         new
                         {
                             Id = 12L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5441),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7405),
                             HealthCareCategoryId = 14L,
                             SubCategory = "Liver"
                         },
                         new
                         {
                             Id = 13L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5442),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7407),
                             HealthCareCategoryId = 15L,
                             SubCategory = "Allergies"
                         },
                         new
                         {
                             Id = 14L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5444),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7409),
                             HealthCareCategoryId = 15L,
                             SubCategory = "Immune Disorders"
                         },
                         new
                         {
                             Id = 15L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5445),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7411),
                             HealthCareCategoryId = 20L,
                             SubCategory = "Kidneys"
                         },
                         new
                         {
                             Id = 16L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5446),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7413),
                             HealthCareCategoryId = 21L,
                             SubCategory = "Brain"
                         },
                         new
                         {
                             Id = 17L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5447),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7415),
                             HealthCareCategoryId = 21L,
                             SubCategory = "Nervous System"
                         },
                         new
                         {
                             Id = 18L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5448),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7417),
                             HealthCareCategoryId = 24L,
                             SubCategory = "Cancer"
                         },
                         new
                         {
                             Id = 19L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5449),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7419),
                             HealthCareCategoryId = 24L,
                             SubCategory = "Bone Marrow Transplant"
                         },
                         new
                         {
                             Id = 20L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5450),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7423),
                             HealthCareCategoryId = 24L,
                             SubCategory = "Cancer Care"
                         },
                         new
                         {
                             Id = 21L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5452),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7425),
                             HealthCareCategoryId = 25L,
                             SubCategory = "Eye Surgery"
                         },
                         new
                         {
                             Id = 22L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5453),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7427),
                             HealthCareCategoryId = 26L,
                             SubCategory = "Bones"
                         },
                         new
                         {
                             Id = 23L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5454),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7429),
                             HealthCareCategoryId = 26L,
                             SubCategory = "Joints"
                         },
                         new
                         {
                             Id = 24L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5455),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7431),
                             HealthCareCategoryId = 32L,
                             SubCategory = "Lungs"
                         },
                         new
                         {
                             Id = 25L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5456),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7433),
                             HealthCareCategoryId = 34L,
                             SubCategory = "Joints"
                         },
                         new
                         {
                             Id = 26L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5458),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7435),
                             HealthCareCategoryId = 34L,
                             SubCategory = "Arthritis"
                         },
                         new
                         {
                             Id = 27L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5459),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7437),
                             HealthCareCategoryId = 34L,
                             SubCategory = "Autoimmune"
                         },
                         new
                         {
                             Id = 28L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5460),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7441),
                             HealthCareCategoryId = 36L,
                             SubCategory = "Urinary Tract"
                         },
                         new
                         {
                             Id = 29L,
-                            CreatedOn = new DateTime(2025, 8, 29, 10, 11, 8, 619, DateTimeKind.Utc).AddTicks(5462),
+                            CreatedOn = new DateTime(2025, 8, 30, 8, 16, 47, 541, DateTimeKind.Utc).AddTicks(7443),
                             HealthCareCategoryId = 36L,
                             SubCategory = "Male Reproductive"
                         });
@@ -515,9 +515,6 @@ namespace GNW_Bazzar.Entity.Migrations
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MyProperty")
-                        .HasColumnType("int");
-
                     b.Property<string>("Token")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -525,13 +522,54 @@ namespace GNW_Bazzar.Entity.Migrations
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("RefreshTokens");
+                });
+
+            modelBuilder.Entity("GNW_Bazzar.Entity.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserRole")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RefreshTokens");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("GNW_Bazzar.Entity.HealthCareSubCategory", b =>
@@ -545,9 +583,26 @@ namespace GNW_Bazzar.Entity.Migrations
                     b.Navigation("HealthCareCategory");
                 });
 
+            modelBuilder.Entity("GNW_Bazzar.Entity.RefreshToken", b =>
+                {
+                    b.HasOne("GNW_Bazzar.Entity.User", "User")
+                        .WithOne("RefreshToken")
+                        .HasForeignKey("GNW_Bazzar.Entity.RefreshToken", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GNW_Bazzar.Entity.HealthCareCategory", b =>
                 {
                     b.Navigation("HealthCareSubCategories");
+                });
+
+            modelBuilder.Entity("GNW_Bazzar.Entity.User", b =>
+                {
+                    b.Navigation("RefreshToken")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

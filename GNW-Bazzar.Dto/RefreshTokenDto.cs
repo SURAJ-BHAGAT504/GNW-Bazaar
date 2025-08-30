@@ -5,7 +5,7 @@ namespace GNW_Bazzar.Dto
     public class RefreshTokenDto : BaseDto
     {
         [Required]
-        public string UserId { get; set; } = default!;
+        public long UserId { get; set; } = default!;
         [Required]
         public string Token { get; set; } = default!;
         [Required]

@@ -11,5 +11,8 @@ namespace GNW_Bazzar.Infra.Clients
 
         public async Task<RefreshToken?> GetRefreshToken(string token) =>
             await dbContext.RefreshTokens.Where(t => t.Token == token).FirstOrDefaultAsync();
+
+        public async Task<User?> GetUser(string email) =>
+            await dbContext.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
     }
 }

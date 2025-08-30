@@ -14,12 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GNW-Bazaar.Core\GNW-Bazaar.Core.csproj" />
     <ProjectReference Include="..\GNW-Bazzar.Infra\GNW-Bazzar.Infra.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

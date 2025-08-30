@@ -9,14 +9,10 @@ using GNW_Bazzar.Entity;
 using GNW_Bazzar.Infra.Clients;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = TokenService.GetValidationParameters();
-    });
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -29,10 +25,29 @@ builder.Services.AddScoped<IMasterDataClient<HealthCareCategory>, HealthCareCate
 builder.Services.AddScoped<IMapper<HealthCareCategoryDto, HealthCareCategory>, HealthCareCategoryMapper>();
 builder.Services.AddScoped<IMapper<HealthCareCategory, HealthCareCategoryDto>, HealthCareCategoryDtoMapper>();
 
+builder.Services.AddScoped<IMasterDataService<UserDto>, UserService>();
+builder.Services.AddScoped<IMasterDataClient<User>, UserClient>();
+builder.Services.AddScoped<IMapper<User, UserDto>, UserDtoMapper>();
+builder.Services.AddScoped<IMapper<UserDto, User>, UserMapper>();
+
 builder.Services.AddDbContext<GNW_BazaarDbContext>(Options =>
 {
     Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecurityKey"])),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+
+        };
+    });
 
 var app = builder.Build();
 
@@ -44,8 +59,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

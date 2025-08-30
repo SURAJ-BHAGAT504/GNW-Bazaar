@@ -6,5 +6,6 @@ namespace GNW_Bazaar.Core.Interface.Clients
     {
         public Task<HealthCareCategory?> GetHealthCareCategory(string category);
         public Task<RefreshToken?> GetRefreshToken(string token);
+        public Task<User?> GetUser(string email);
     }
 }

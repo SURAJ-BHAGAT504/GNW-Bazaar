@@ -21,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GNW-Bazaar.Core\GNW-Bazaar.Core.csproj" />
     <ProjectReference Include="..\GNW-Bazzar.Infra\GNW-Bazzar.Infra.csproj" />
-    <ProjectReference Include="..\GNW_Bazaar_SignupAndLogin\GNW_Bazaar_SignupAndLogin.csproj" />
   </ItemGroup>
 
 </Project>
