@@ -17,7 +17,7 @@ namespace GNW_Bazzar.Infra.Clients
             await dbContext.Users.ToListAsync();
 
         public async Task<User?> Get(long id) =>
-            await dbContext.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+            await dbContext.Users.AsNoTracking().Where(u => u.Id == id).FirstOrDefaultAsync();
 
         public async Task Update(User entity)
         {

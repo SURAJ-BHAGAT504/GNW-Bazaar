@@ -14,6 +14,8 @@ namespace GNW_Bazaar.Core.Mappers.Entity
             PhoneNumber = input.PhoneNumber,
             Password = input.Password,
             UserRole = input.UserRole,
+            IsActive = input.IsActive,
+            LastLogin = input.LastLogin,
             CreatedOn = input.CreatedOn,
             UpdatedOn = input.UpdatedOn,
         };

@@ -36,6 +36,19 @@ namespace GNW_Bazaar_SignupAndLogin.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> Logout([FromForm] long userId)
+        {
+            try
+            {
+                return Ok(JsonSerializer.Serialize(await loginService.Logout(userId)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
         public async Task<IActionResult> RefreshToken([FromForm] string token)
         {
             try

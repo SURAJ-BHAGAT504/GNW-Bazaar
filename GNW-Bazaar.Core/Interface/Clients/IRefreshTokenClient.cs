@@ -7,5 +7,6 @@ namespace GNW_Bazaar.Core.Interface.Clients
         Task<RefreshToken?> Get(string token);
         Task<long> Create(RefreshToken entity);
         Task Update(RefreshToken entity);
+        Task Delete(long userId);
     }
 }

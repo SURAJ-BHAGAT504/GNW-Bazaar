@@ -13,8 +13,14 @@ namespace GNW_Bazzar.Infra.Clients
             return entity.Id;
         }
 
+        public async Task Delete(long userId)
+        {
+            await dbContext.RefreshTokens.Where(r => r.UserId == userId).ExecuteDeleteAsync();
+            await dbContext.SaveChangesAsync();
+        }
+
         public async Task<RefreshToken?> Get(string token) =>
-            await dbContext.RefreshTokens.Where(r => r.Token == token).FirstOrDefaultAsync();
+            await dbContext.RefreshTokens.AsNoTracking().Where(r => r.Token == token).FirstOrDefaultAsync();
 
         public async Task Update(RefreshToken entity)
         {

@@ -11,7 +11,8 @@ using System.Net;
 namespace GNW_Bazaar.Core.Services
 {
     public class LoginService(ILogger<LoginService> logger, IValidationClient validationClient, ITokenService tokenService, IMapper<User, UserDto> userDtoMapper,
-        IRefreshTokenService refreshTokenService, IMasterDataService<UserDto> userService) : ILoginService
+        IRefreshTokenService refreshTokenService, IMasterDataService<UserDto> userService, IRefreshTokenClient refreshTokenClient,
+        IMasterDataClient<User> userClient) : ILoginService
     {
         public async Task<ResponseDto<object?>> Login(LoginDto loginDto)
         {
@@ -25,7 +26,7 @@ namespace GNW_Bazaar.Core.Services
                     return new ResponseDto<object?>
                     {
                         ResponseCode = (int)HttpStatusCode.Unauthorized,
-                        Message = "Invalid Email or Password"
+                        Message = "Please signup before login"
                     };
                 }
 
@@ -48,6 +49,11 @@ namespace GNW_Bazaar.Core.Services
                 var refreshTokenEntity = tokenService.GenerateRefreshToken(userDto.Id);
 
                 await refreshTokenService.Create(refreshTokenEntity);
+
+                userDto.IsActive = true;
+                userDto.LastLogin = DateTime.Now;
+
+                await userService.Update(userDto);
 
                 return new ResponseDto<object?>
                 {
@@ -74,6 +80,58 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
+        public async Task<ResponseDto<object?>> Logout(long userId)
+        {
+            try
+            {
+                if (userId == 0) throw new Exception("Please enter valid Id");
+
+                var user = await userClient.Get(userId);
+                if (user == null)
+                {
+                    return new ResponseDto<object?>
+                    {
+                        ResponseCode = (int)HttpStatusCode.NotFound,
+                        Message = "Something went wrong"
+                    };
+                }
+
+                var userDto = userDtoMapper.Map(user);
+
+                await userService.Update(new UserDto
+                {
+                    Id = userDto.Id,
+                    Name = userDto.Name,
+                    Email = userDto.Email,
+                    PhoneNumber = userDto.PhoneNumber,
+                    Password = userDto.Password,
+                    UserRole = userDto.UserRole,
+                    IsActive = false,
+                    CreatedOn = userDto.CreatedOn,
+                    LastLogin = userDto.LastLogin,
+                    UpdatedOn = DateTime.Now
+                });
+
+                await refreshTokenClient.Delete(userId);
+
+                return new ResponseDto<object?>()
+                {
+                    ResponseCode = (int)HttpStatusCode.OK,
+                    Message = "User logout successfully",
+                    Value = true
+                };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "LoginService.Logout");
+                return new()
+                {
+                    ResponseCode = (int)HttpStatusCode.InternalServerError,
+                    Message = ex.Message
+                };
+            }
+        }
+         
         public async Task<ResponseDto<object?>> RefreshToken(string token)
         {
             try
@@ -91,7 +149,7 @@ namespace GNW_Bazaar.Core.Services
 
                 var existingToken = existingTokenResult.Value;
 
-                var user = await userService.Get(existingToken.UserId); ;
+                var user = await userService.Get(existingToken.UserId);
 
                 if (user.Value == null)
                 {

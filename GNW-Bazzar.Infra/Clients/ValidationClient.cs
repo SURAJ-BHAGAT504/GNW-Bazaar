@@ -9,10 +9,13 @@ namespace GNW_Bazzar.Infra.Clients
         public async Task<HealthCareCategory?> GetHealthCareCategory(string category) =>
             await dbContext.HealthCareCategories.Where(h => h.Category == category).FirstOrDefaultAsync();
 
+        public async Task<Otp?> GetOtp(long userId, string purpose)=>
+            await dbContext.Otps.AsNoTracking().Where(o => o.UserId == userId && o.Purpose == purpose).FirstOrDefaultAsync();
+
         public async Task<RefreshToken?> GetRefreshToken(string token) =>
-            await dbContext.RefreshTokens.Where(t => t.Token == token).FirstOrDefaultAsync();
+            await dbContext.RefreshTokens.AsNoTracking().Where(t => t.Token == token).FirstOrDefaultAsync();
 
         public async Task<User?> GetUser(string email) =>
-            await dbContext.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            await dbContext.Users.AsNoTracking().Where(u => u.Email == email).FirstOrDefaultAsync();
     }
 }

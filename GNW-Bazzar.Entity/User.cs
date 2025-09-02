@@ -16,9 +16,14 @@ namespace GNW_Bazzar.Entity
         [Required]
         public string UserRole { get; set; } = default!;
         [Required]
+        public bool IsActive { get; set; }
+        [Required]
+        public DateTime LastLogin { get; set; }
+        [Required]
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
         public RefreshToken RefreshToken { get; set; } = default!;
+        public Otp Otp { get; set; } = default!;
     }
 }

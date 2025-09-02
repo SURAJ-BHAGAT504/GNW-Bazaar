@@ -58,6 +58,7 @@
       "UpstreamHttpMethod": [ "Put" ]
     },
 
+
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/SignUp",
       "DownstreamScheme": "https",
@@ -94,6 +95,46 @@
         }
       ],
       "UpstreamPathTemplate": "/GNW_RefreshToken",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/SignUpAndLogin/Logout",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7178
+        }
+      ],
+      "UpstreamPathTemplate": "/GNW_Logout",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/Otp/GenerateOtp",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7212
+        }
+      ],
+      "UpstreamPathTemplate": "/GNW_GenerateOtp",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/Otp/ValidateOtp",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7212
+        }
+      ],
+      "UpstreamPathTemplate": "/GNW_ValidateOtp",
       "UpstreamHttpMethod": [ "Post" ]
     }
   ]

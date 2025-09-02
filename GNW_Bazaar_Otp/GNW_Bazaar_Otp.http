@@ -1,0 +1,6 @@
+@GNW_Bazaar_Otp_HostAddress = http://localhost:5171
+
+GET {{GNW_Bazaar_Otp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

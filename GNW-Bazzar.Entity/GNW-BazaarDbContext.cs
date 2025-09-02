@@ -8,6 +8,7 @@ namespace GNW_Bazzar.Entity
         public DbSet<HealthCareSubCategory> HealthCareSubCategories { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Otp> Otps { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

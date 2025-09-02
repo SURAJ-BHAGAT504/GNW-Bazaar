@@ -89,14 +89,14 @@ namespace GNW_Bazaar.Core.Services
                 return new ResponseDto<bool>()
                 {
                     ResponseCode = (int)HttpStatusCode.OK,
-                    Message = "HealthCare Category updated successfully",
+                    Message = "Refresh Token updated successfully",
                     Value = true
                 };
 
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "HealthCareCategoryService.Update");
+                logger.LogError(ex, "RefreshTokenService.Update");
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.InternalServerError,
