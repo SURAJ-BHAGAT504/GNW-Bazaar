@@ -7,6 +7,8 @@ namespace GNW_Bazzar.Dto
         [Required(ErrorMessage = "Please enter Category"), StringLength(50, ErrorMessage = "Category can`t exceed 50 chars")]
         public string Category { get; set; } = default!;
         [Required]
+        public long CategoryMasterId { get; set; }
+        [Required]
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
     }

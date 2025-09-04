@@ -24,4 +24,9 @@
     <ProjectReference Include="..\GNW-Bazzar.Infra\GNW-Bazzar.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DoctorImage\" />
+    <Folder Include="ClinicImage\" />
+  </ItemGroup>
+
 </Project>

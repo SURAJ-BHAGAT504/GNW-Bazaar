@@ -10,6 +10,7 @@ namespace GNW_Bazaar.Core.Mappers.Entity
         {
             Id = input.Id,
             Category = input.Category,
+            CategoryMasterId = input.CategoryMasterId,
             CreatedOn = input.CreatedOn,
             UpdatedOn = input.UpdatedOn,
         };

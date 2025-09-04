@@ -7,9 +7,12 @@ namespace GNW_Bazzar.Entity
         [Required, StringLength(50)]
         public string Category { get; set; } = default!;
         [Required]
+        public long CategoryMasterId { get; set; }
+        [Required]
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
+        public CategoryMaster CategoryMaster { get; set; } = default!;
         public ICollection<HealthCareSubCategory> HealthCareSubCategories { get; set; } = default!;
     }
 }

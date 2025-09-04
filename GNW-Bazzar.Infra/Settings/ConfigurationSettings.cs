@@ -13,6 +13,12 @@ namespace GNW_Bazzar.Infra.Settings
             .Build();
         }
 
+        public HealthCareImageDto GetHealthCareImagePath() => new()
+        {
+            DoctorImagePath = Configuration().GetValue<string>("HealthCareImages:DoctorImageFolder"),
+            ClinicImagePath = Configuration().GetValue<string>("HealthCareImages:ClinicImageFolder")
+        };
+
         public JwtDto GetJwtDetails() => new()
         {
             SecurityKey = Configuration().GetValue<string>("Jwt:SecurityKey"),

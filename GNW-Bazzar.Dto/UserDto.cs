@@ -5,7 +5,7 @@ namespace GNW_Bazzar.Dto
 {
     public class UserDto : BaseDto
     {
-        [Required(ErrorMessage = "Please enyer eyour name"), StringLength(50, ErrorMessage = "Name can`t exceed 50 chars")]
+        [Required(ErrorMessage = "Please enter your name"), StringLength(50, ErrorMessage = "Name can`t exceed 50 chars")]
         public string Name { get; set; } = default!;
         [Required(ErrorMessage = "Please enter uour email"), EmailAddress]
         public string Email { get; set; } = default!;

@@ -16,7 +16,7 @@ namespace GNW_Bazzar.Entity
         [Required]
         public string UserRole { get; set; } = default!;
         [Required]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         [Required]
         public DateTime LastLogin { get; set; }
         [Required]
