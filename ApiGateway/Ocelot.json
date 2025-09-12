@@ -12,7 +12,7 @@
       "UpstreamPathTemplate": "/GetAll_HealthCare_Category",
       "UpstreamHttpMethod": [ "Get" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Get?id={id}",
       "DownstreamScheme": "https",
@@ -31,7 +31,7 @@
         }
       ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Create",
       "DownstreamScheme": "https",
@@ -44,7 +44,7 @@
       "UpstreamPathTemplate": "/Create_HealthCare_Category",
       "UpstreamHttpMethod": [ "Post" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Update",
       "DownstreamScheme": "https",
@@ -57,7 +57,8 @@
       "UpstreamPathTemplate": "/Update_HealthCare_Category",
       "UpstreamHttpMethod": [ "Put" ]
     },
-
+    //
+    //
     {
       "DownstreamPathTemplate": "/Doctor/GetAll",
       "DownstreamScheme": "https",
@@ -70,7 +71,7 @@
       "UpstreamPathTemplate": "/GetAll_Doctor",
       "UpstreamHttpMethod": [ "Get" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/Doctor/Get?id={id}",
       "DownstreamScheme": "https",
@@ -89,7 +90,7 @@
         }
       ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/Doctor/Create",
       "DownstreamScheme": "https",
@@ -102,7 +103,7 @@
       "UpstreamPathTemplate": "/Create_Doctor",
       "UpstreamHttpMethod": [ "Post" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/Doctor/Update",
       "DownstreamScheme": "https",
@@ -115,8 +116,67 @@
       "UpstreamPathTemplate": "/Update_Doctor",
       "UpstreamHttpMethod": [ "Put" ]
     },
-
-
+    //
+    //
+    {
+      "DownstreamPathTemplate": "/CategoryMaster/GetAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "UpstreamPathTemplate": "/GetAll_CategoryMaster",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/CategoryMaster/Get?id={id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "UpstreamPathTemplate": "/Get_CategoryMaster/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "id",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/CategoryMaster/Create",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "UpstreamPathTemplate": "/Create_CategoryMaster",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/CategoryMaster/Update",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "UpstreamPathTemplate": "/Update_CategoryMaster",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    //
+    //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/SignUp",
       "DownstreamScheme": "https",
@@ -129,7 +189,7 @@
       "UpstreamPathTemplate": "/GNW_SignUp",
       "UpstreamHttpMethod": [ "Post" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/Login",
       "DownstreamScheme": "https",
@@ -142,7 +202,7 @@
       "UpstreamPathTemplate": "/GNW_Login",
       "UpstreamHttpMethod": [ "Post" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/RefreshToken",
       "DownstreamScheme": "https",
@@ -155,7 +215,7 @@
       "UpstreamPathTemplate": "/GNW_RefreshToken",
       "UpstreamHttpMethod": [ "Post" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/Logout",
       "DownstreamScheme": "https",
@@ -168,8 +228,8 @@
       "UpstreamPathTemplate": "/GNW_Logout",
       "UpstreamHttpMethod": [ "Post" ]
     },
-
-
+    //
+    //
     {
       "DownstreamPathTemplate": "/Otp/GenerateOtp",
       "DownstreamScheme": "https",
@@ -182,7 +242,7 @@
       "UpstreamPathTemplate": "/GNW_GenerateOtp",
       "UpstreamHttpMethod": [ "Post" ]
     },
-
+    //
     {
       "DownstreamPathTemplate": "/Otp/ValidateOtp",
       "DownstreamScheme": "https",
