@@ -78,6 +78,7 @@ namespace GNW_Bazaar.Core.Services
                     Phonenumber = doctorEntity.Phonenumber,
                     Email = doctorEntity.Email,
                     Address = doctorEntity.Address,
+                    Location = doctorEntity.Location,
                     DoctorImage = doctorImagePath,
                     ClinicImage = clinicImagePath,
                     IsActive = true,
@@ -176,47 +177,48 @@ namespace GNW_Bazaar.Core.Services
 
                 if (existingDoctor == null) throw new Exception("Doctor not found");
 
-                DateTime dt = DateTime.Now;
                 string rootPath = Directory.GetCurrentDirectory();
 
-                string doctorBaseFolder = Path.Combine(rootPath, configuration.GetHealthCareImagePath().DoctorImagePath);
+                string doctorImageFolder;
+                if (!string.IsNullOrEmpty(existingDoctor.DoctorImage))
+                {
+                    doctorImageFolder = Path.GetDirectoryName(existingDoctor.DoctorImage);
+                }
+                else
+                {
+                    DateTime dt = DateTime.Now;
+                    doctorImageFolder = Path.Combine(rootPath, configuration.GetHealthCareImagePath().DoctorImagePath,
+                        entity.DoctorName.Replace(" ", ""), "DoctorImage", dt.Year.ToString(), dt.ToString("MMM-yyyy"), dt.ToString("dd-MMM"));
+                }
 
-                string clinicBaseFolder = Path.Combine(rootPath, configuration.GetHealthCareImagePath().ClinicImagePath);
-
-                string safeName = entity.DoctorName.Replace(" ", "");
-
-                string doctorImageFolder = Path.Combine(
-                    doctorBaseFolder,
-                    safeName,
-                    "DoctorImage",
-                    dt.Year.ToString(),
-                    dt.ToString("MMM-yyyy"),
-                    dt.ToString("dd-MMM")
-                );
-
-                string clinicImageFolder = Path.Combine(
-                    clinicBaseFolder,
-                    safeName,
-                    "ClinicImage",
-                    dt.Year.ToString(),
-                    dt.ToString("MMM-yyyy"),
-                    dt.ToString("dd-MMM")
-                );
-
-                if (!Directory.Exists(doctorImageFolder))
-                    Directory.CreateDirectory(doctorImageFolder);
-
-                if (!Directory.Exists(clinicImageFolder))
-                    Directory.CreateDirectory(clinicImageFolder);
+                string clinicImageFolder;
+                if (!string.IsNullOrEmpty(existingDoctor.ClinicImage))
+                {
+                    clinicImageFolder = Path.GetDirectoryName(existingDoctor.ClinicImage);
+                }
+                else
+                {
+                    DateTime dt = DateTime.Now;
+                    clinicImageFolder = Path.Combine(rootPath, configuration.GetHealthCareImagePath().ClinicImagePath,
+                        entity.DoctorName.Replace(" ", ""), "ClinicImage", dt.Year.ToString(), dt.ToString("MMM-yyyy"), dt.ToString("dd-MMM"));
+                }
 
                 string doctorImagePath = existingDoctor.DoctorImage;
                 string clinicImagePath = existingDoctor.ClinicImage;
 
                 if (entity.DoctorImage != null)
+                {
+                    if (File.Exists(existingDoctor.DoctorImage)) File.Delete(existingDoctor.DoctorImage);
+
                     doctorImagePath = await SaveFile(entity.DoctorImage, doctorImageFolder);
+                }
 
                 if (entity.ClinicImage != null)
+                {
+                    if (File.Exists(existingDoctor.ClinicImage)) File.Delete(existingDoctor.ClinicImage);
+
                     clinicImagePath = await SaveFile(entity.ClinicImage, clinicImageFolder);
+                }
 
                 existingDoctor.DoctorName = entity.DoctorName;
                 existingDoctor.HealthCareSubCategoryId = entity.HealthCareSubCategoryId;
@@ -226,6 +228,7 @@ namespace GNW_Bazaar.Core.Services
                 existingDoctor.Phonenumber = entity.Phonenumber;
                 existingDoctor.Email = entity.Email;
                 existingDoctor.Address = entity.Address;
+                existingDoctor.Location = entity.location;
                 existingDoctor.DoctorImage = doctorImagePath;
                 existingDoctor.ClinicImage = clinicImagePath;
                 existingDoctor.IsActive = entity.IsActive;
@@ -233,21 +236,12 @@ namespace GNW_Bazaar.Core.Services
 
                 await doctorClient.Update(existingDoctor);
 
-                return new ResponseDto<bool>
-                {
-                    ResponseCode = (int)HttpStatusCode.OK,
-                    Message = "Doctor updated successfully",
-                    Value = true
-                };
+                return new ResponseDto<bool> { ResponseCode = (int)HttpStatusCode.OK, Message = "Doctor updated successfully", Value = true };
             }
             catch (Exception ex)
             {
                 logger.LogError(ex, "DoctorService.Update");
-                return new()
-                {
-                    ResponseCode = (int)HttpStatusCode.InternalServerError,
-                    Message = ex.Message
-                };
+                return new() { ResponseCode = (int)HttpStatusCode.InternalServerError, Message = ex.Message };
             }
         }
 

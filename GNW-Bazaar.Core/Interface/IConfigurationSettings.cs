@@ -6,5 +6,6 @@ namespace GNW_Bazaar.Core.Interface
     {
         JwtDto GetJwtDetails();
         HealthCareImageDto GetHealthCareImagePath();
+        ClientImageDto GetClientImagePath();
     }
 }

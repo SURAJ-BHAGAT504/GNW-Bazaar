@@ -7,6 +7,7 @@ namespace GNW_Bazzar.Entity
         public DbSet<HealthCareCategory> HealthCareCategories { get; set; }
         public DbSet<HealthCareSubCategory> HealthCareSubCategories { get; set; }
         public DbSet<CategoryMaster> CategoryMasters { get; set; }
+        public DbSet<Client> Clients { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<User> Users { get; set; }

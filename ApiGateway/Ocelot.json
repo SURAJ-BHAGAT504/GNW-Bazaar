@@ -119,6 +119,65 @@
     //
     //
     {
+      "DownstreamPathTemplate": "/Client/GetAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7103
+        }
+      ],
+      "UpstreamPathTemplate": "/GetAll_Client",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Client/Get?id={id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7103
+        }
+      ],
+      "UpstreamPathTemplate": "/Get_Client/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "id",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Client/Create",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7103
+        }
+      ],
+      "UpstreamPathTemplate": "/Create_Client",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Client/Update",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7103
+        }
+      ],
+      "UpstreamPathTemplate": "/Update_Client",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    //
+    //
+    {
       "DownstreamPathTemplate": "/CategoryMaster/GetAll",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [

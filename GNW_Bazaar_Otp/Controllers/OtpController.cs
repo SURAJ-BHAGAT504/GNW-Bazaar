@@ -1,5 +1,6 @@
 ﻿using GNW_Bazaar.Core.Interface.Services;
 using GNW_Bazzar.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -10,6 +11,7 @@ namespace GNW_Bazaar_Otp.Controllers
     public class OtpController(IOtpService otpService) : ControllerBase
     {
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> GenerateOtp([FromForm] GenerateOtpDto generateOtpDto)
         {
             try
@@ -23,6 +25,7 @@ namespace GNW_Bazaar_Otp.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> ValidateOtp([FromForm] ValidateOtpDto validateOtpDto)
         {
             try

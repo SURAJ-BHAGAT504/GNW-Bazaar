@@ -13,6 +13,11 @@ namespace GNW_Bazzar.Infra.Settings
             .Build();
         }
 
+        public ClientImageDto GetClientImagePath() => new()
+        {
+            ClientImagePath = Configuration().GetValue<string>("ClientImage:ClientImageFolder")
+        };
+
         public HealthCareImageDto GetHealthCareImagePath() => new()
         {
             DoctorImagePath = Configuration().GetValue<string>("HealthCareImages:DoctorImageFolder"),
