@@ -16,6 +16,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IValidationClient, ValidationClient>();
 
+builder.Services.AddScoped<IMailService, MailService>();
+
 builder.Services.AddScoped<IOtpService, OtpService>();
 builder.Services.AddScoped<IMasterDataClient<Otp>, OtpClient>();
 

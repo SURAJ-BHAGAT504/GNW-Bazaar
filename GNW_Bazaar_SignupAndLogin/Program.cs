@@ -23,6 +23,11 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddScoped<IValidationClient, ValidationClient>();
 
+builder.Services.AddScoped<IMailService, MailService>();
+
+builder.Services.AddScoped<IOtpService, OtpService>();
+builder.Services.AddScoped<IMasterDataClient<Otp>, OtpClient>();
+
 builder.Services.AddScoped<IRefreshTokenService, RefreshTokenService>();
 builder.Services.AddScoped<IRefreshTokenClient, RefreshTokenClient>();
 builder.Services.AddScoped<IMapper<RefreshToken, RefreshTokenDto>, RefreshTokenDtoMapper>();

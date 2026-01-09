@@ -7,29 +7,40 @@ using System.Net;
 
 namespace GNW_Bazaar.Core.Services
 {
-    public class OtpService(ILogger<OtpService> logger, IMasterDataClient<Otp> otpClient, IValidationClient validationClient) : IOtpService
+    public class OtpService(ILogger<OtpService> logger, IMasterDataClient<Otp> otpClient, IValidationClient validationClient, IMailService mailService) : IOtpService
     {
         public async Task<ResponseDto<object?>> GenerateOtp(GenerateOtpDto generateOtpDto)
         {
             try
             {
-                if (generateOtpDto.UserId <= 0 || string.IsNullOrWhiteSpace(generateOtpDto.Purpose))
+                if (string.IsNullOrWhiteSpace(generateOtpDto.Email) || string.IsNullOrWhiteSpace(generateOtpDto.Purpose))
                 {
                     return new ResponseDto<object?>
                     {
-                        ResponseCode = (int)HttpStatusCode.BadRequest,
+                        ResponseCode = (int)HttpStatusCode.BadRequest, 
                         Message = "Invalid input"
+                    };
+                }
+
+                var userDetails = await validationClient.GetUser(generateOtpDto.Email);
+
+                if (userDetails == null)
+                {
+                    return new ResponseDto<object?>
+                    {
+                        ResponseCode = (int)HttpStatusCode.NotFound,
+                        Message = "User not found"
                     };
                 }
 
                 var random = new Random();
                 var otpCode = random.Next(1000, 9999).ToString();
 
-                var existingOtp = await otpClient.Get(generateOtpDto.UserId);
+                var existingOtp = await otpClient.Get(userDetails.Id); 
 
                 if (existingOtp != null)
                 {
-                    existingOtp.UserId = generateOtpDto.UserId;
+                    existingOtp.UserId = userDetails.Id;
                     existingOtp.Purpose = generateOtpDto.Purpose;
                     existingOtp.OtpCode = otpCode;
                     existingOtp.ExpiresOn = DateTime.UtcNow.AddMinutes(5);
@@ -43,7 +54,7 @@ namespace GNW_Bazaar.Core.Services
                 {
                     var newOtp = new Otp
                     {
-                        UserId = generateOtpDto.UserId,
+                        UserId = userDetails.Id,
                         Purpose = generateOtpDto.Purpose,
                         OtpCode = otpCode,
                         ExpiresOn = DateTime.UtcNow.AddMinutes(5),
@@ -55,14 +66,15 @@ namespace GNW_Bazaar.Core.Services
                     await otpClient.Create(newOtp);
                 }
 
+                await mailService.SendOtpByEmail(generateOtpDto.Email, otpCode);
+
                 return new ResponseDto<object?>
                 {
                     ResponseCode = (int)HttpStatusCode.OK,
-                    Message = "OTP generated successfully",
+                    Message = "OTP generated and send successfully",
                     Value = new
                     {
-                        userId = generateOtpDto.UserId,
-                        OtpCode = otpCode
+                        email = generateOtpDto.Email
                     }
                 };
             }
@@ -81,7 +93,7 @@ namespace GNW_Bazaar.Core.Services
         {
             try
             {
-                if (validateOtpDto.UserId <= 0 || string.IsNullOrWhiteSpace(validateOtpDto.Purpose) || string.IsNullOrWhiteSpace(validateOtpDto.Otp))
+                if (string.IsNullOrWhiteSpace(validateOtpDto.Email) || string.IsNullOrWhiteSpace(validateOtpDto.Purpose) || string.IsNullOrWhiteSpace(validateOtpDto.Otp))
                 {
                     return new ResponseDto<bool>
                     {
@@ -91,7 +103,19 @@ namespace GNW_Bazaar.Core.Services
                     };
                 }
 
-                var existingOtp = await validationClient.GetOtp(validateOtpDto.UserId, validateOtpDto.Purpose);
+                var userDetails = await validationClient.GetUser(validateOtpDto.Email);
+
+                if (userDetails == null)
+                {
+                    return new ResponseDto<bool>
+                    {
+                        ResponseCode = (int)HttpStatusCode.NotFound,
+                        Message = "User not found.",
+                        Value = false
+                    };
+                }
+
+                var existingOtp = await validationClient.GetOtp(userDetails.Id, validateOtpDto.Purpose);
 
                 if (existingOtp == null)
                 {

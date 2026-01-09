@@ -60,5 +60,18 @@ namespace GNW_Bazaar_SignupAndLogin.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword([FromForm] ForgotPasswordDto forgotPasswordDto)
+        {
+            try
+            {
+                return Ok(JsonSerializer.Serialize(await loginService.ForgotPassword(forgotPasswordDto)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

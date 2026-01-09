@@ -12,8 +12,74 @@ namespace GNW_Bazaar.Core.Services
 {
     public class LoginService(ILogger<LoginService> logger, IValidationClient validationClient, ITokenService tokenService, IMapper<User, UserDto> userDtoMapper,
         IRefreshTokenService refreshTokenService, IMasterDataService<UserDto> userService, IRefreshTokenClient refreshTokenClient,
-        IMasterDataClient<User> userClient) : ILoginService
+        IMasterDataClient<User> userClient, IOtpService otpService) : ILoginService
     {
+        public async Task<ResponseDto<object?>> ForgotPassword(ForgotPasswordDto forgotPasswordDto)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(forgotPasswordDto.Email) ||
+                    string.IsNullOrWhiteSpace(forgotPasswordDto.Password) ||
+                    forgotPasswordDto.OtpCode == 0)
+                {
+                    return new ResponseDto<object?>
+                    {
+                        ResponseCode = (int)HttpStatusCode.BadRequest,
+                        Message = "Invalid input. Email, OTP, and new Password are required."
+                    };
+                }
+
+                var otpValidationResult = await otpService.ValidateOtp(new ValidateOtpDto
+                {
+                    Email = forgotPasswordDto.Email,
+                    Otp = forgotPasswordDto.OtpCode.ToString(),
+                    Purpose = forgotPasswordDto.Purpose ?? "ForgotPassword" 
+                });
+
+                if (otpValidationResult.ResponseCode != (int)HttpStatusCode.OK || !otpValidationResult.Value)
+                {
+                    return new ResponseDto<object?>
+                    {
+                        ResponseCode = otpValidationResult.ResponseCode,
+                        Message = otpValidationResult.Message
+                    };
+                }
+
+                var user = await validationClient.GetUser(forgotPasswordDto.Email);
+                if (user == null)
+                {
+                    return new ResponseDto<object?>
+                    {
+                        ResponseCode = (int)HttpStatusCode.NotFound,
+                        Message = "User not found."
+                    };
+                }
+
+                var userDto = userDtoMapper.Map(user);
+                var passwordHasher = new PasswordHasher<UserDto>();
+                userDto.Password = passwordHasher.HashPassword(userDto, forgotPasswordDto.Password);
+
+                userDto.UpdatedOn = DateTime.Now;
+                await userService.Update(userDto);
+
+                return new ResponseDto<object?>
+                {
+                    ResponseCode = (int)HttpStatusCode.OK,
+                    Message = "Password changed successfully. You can now login with your new password.",
+                    Value = true
+                };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "LoginService.ForgotPassword Error for Email: {Email}", forgotPasswordDto.Email);
+                return new ResponseDto<object?>
+                {
+                    ResponseCode = (int)HttpStatusCode.InternalServerError,
+                    Message = ex.Message
+                };
+            }
+        }
+
         public async Task<ResponseDto<object?>> Login(LoginDto loginDto)
         {
             try
