@@ -11,7 +11,6 @@ namespace GNW_Bazaar_Otp.Controllers
     public class OtpController(IOtpService otpService) : ControllerBase
     {
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> GenerateOtp([FromForm] GenerateOtpDto generateOtpDto)
         {
             try
@@ -25,7 +24,6 @@ namespace GNW_Bazaar_Otp.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> ValidateOtp([FromForm] ValidateOtpDto validateOtpDto)
         {
             try

@@ -45,6 +45,7 @@ namespace GNW_Bazaar.Core.Services
                     existingOtp.OtpCode = otpCode;
                     existingOtp.ExpiresOn = DateTime.UtcNow.AddMinutes(5);
                     existingOtp.IsUsed = false;
+                    existingOtp.IsVerified = false;
                     existingOtp.Attempts = 0;
                     existingOtp.UpdatedOn = DateTime.UtcNow;
 
@@ -59,6 +60,7 @@ namespace GNW_Bazaar.Core.Services
                         OtpCode = otpCode,
                         ExpiresOn = DateTime.UtcNow.AddMinutes(5),
                         IsUsed = false,
+                        IsVerified = false,
                         Attempts = 0,
                         CreatedOn = DateTime.UtcNow
                     };
@@ -172,6 +174,7 @@ namespace GNW_Bazaar.Core.Services
                 }
 
                 existingOtp.IsUsed = true;
+                existingOtp.IsVerified = true;
                 existingOtp.UpdatedOn = DateTime.UtcNow;
                 await otpClient.Update(existingOtp);
 

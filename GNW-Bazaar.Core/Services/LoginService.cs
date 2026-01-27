@@ -12,36 +12,19 @@ namespace GNW_Bazaar.Core.Services
 {
     public class LoginService(ILogger<LoginService> logger, IValidationClient validationClient, ITokenService tokenService, IMapper<User, UserDto> userDtoMapper,
         IRefreshTokenService refreshTokenService, IMasterDataService<UserDto> userService, IRefreshTokenClient refreshTokenClient,
-        IMasterDataClient<User> userClient, IOtpService otpService) : ILoginService
+        IMasterDataClient<User> userClient, IMasterDataClient<Otp> otpClient) : ILoginService
     {
         public async Task<ResponseDto<object?>> ForgotPassword(ForgotPasswordDto forgotPasswordDto)
         {
             try
             {
                 if (string.IsNullOrWhiteSpace(forgotPasswordDto.Email) ||
-                    string.IsNullOrWhiteSpace(forgotPasswordDto.Password) ||
-                    forgotPasswordDto.OtpCode == 0)
+                    string.IsNullOrWhiteSpace(forgotPasswordDto.Password))
                 {
                     return new ResponseDto<object?>
                     {
                         ResponseCode = (int)HttpStatusCode.BadRequest,
-                        Message = "Invalid input. Email, OTP, and new Password are required."
-                    };
-                }
-
-                var otpValidationResult = await otpService.ValidateOtp(new ValidateOtpDto
-                {
-                    Email = forgotPasswordDto.Email,
-                    Otp = forgotPasswordDto.OtpCode.ToString(),
-                    Purpose = forgotPasswordDto.Purpose ?? "ForgotPassword" 
-                });
-
-                if (otpValidationResult.ResponseCode != (int)HttpStatusCode.OK || !otpValidationResult.Value)
-                {
-                    return new ResponseDto<object?>
-                    {
-                        ResponseCode = otpValidationResult.ResponseCode,
-                        Message = otpValidationResult.Message
+                        Message = "Invalid input. Email and new Password are required."
                     };
                 }
 
@@ -52,6 +35,17 @@ namespace GNW_Bazaar.Core.Services
                     {
                         ResponseCode = (int)HttpStatusCode.NotFound,
                         Message = "User not found."
+                    };
+                }
+
+                var otp = await otpClient.Get(user.Id);
+
+                if(otp == null || otp.Purpose != forgotPasswordDto.Purpose || otp.IsUsed == false || otp.IsVerified == false)
+                {
+                    return new ResponseDto<object?>
+                    {
+                        ResponseCode = (int)HttpStatusCode.BadRequest,
+                        Message = "Invalid or expired OTP."
                     };
                 }
 
@@ -197,7 +191,7 @@ namespace GNW_Bazaar.Core.Services
                 };
             }
         }
-         
+
         public async Task<ResponseDto<object?>> RefreshToken(string token)
         {
             try

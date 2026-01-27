@@ -15,6 +15,8 @@ namespace GNW_Bazzar.Dto
         [Required]
         public bool IsUsed { get; set; }
         [Required]
+        public bool IsVerified { get; set; } = false;
+        [Required]
         public long Attempts { get; set; }
         [Required]
         public DateTime CreatedOn { get; set; }

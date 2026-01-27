@@ -13,7 +13,9 @@ namespace GNW_Bazzar.Entity
         [Required]
         public DateTime ExpiresOn { get; set; }
         [Required]
-        public bool IsUsed { get; set; }
+        public bool IsUsed { get; set; } = false;
+        [Required]
+        public bool IsVerified { get; set; } = false;
         [Required]
         public long Attempts { get; set; }
         [Required]
