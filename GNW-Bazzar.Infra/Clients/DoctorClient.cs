@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GNW_Bazzar.Infra.Clients
 {
-    public class DoctorClient(GNW_BazaarDbContext dbContext) : IMasterDataClient<Doctor>
+    public class DoctorClient(GNW_BazaarDbContext dbContext) : IDoctorClient
     {
         public async Task<long> Create(Doctor entity)
         {
@@ -18,6 +18,9 @@ namespace GNW_Bazzar.Infra.Clients
 
         public async Task<Doctor?> Get(long id) =>
             await dbContext.Doctors.AsNoTracking().Where(d => d.Id == id).FirstOrDefaultAsync();
+
+        public async Task<List<Doctor>> GetDoctorBySubCategoryId(long subCategoryId) =>
+            await dbContext.Doctors.Where(d => d.HealthCareSubCategoryId == subCategoryId).ToListAsync();
 
         public async Task Update(Doctor entity)
         {

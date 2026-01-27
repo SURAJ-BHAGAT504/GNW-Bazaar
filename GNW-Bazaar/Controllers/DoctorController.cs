@@ -8,7 +8,7 @@ namespace GNW_Bazaar.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class DoctorController(IMasterDataService<DoctorDto> doctorService) : ControllerBase
+    public class DoctorController(IDoctorService doctorService) : ControllerBase
     {
         [HttpGet]
         [Authorize]
@@ -31,6 +31,20 @@ namespace GNW_Bazaar.Controllers
             try
             {
                 return Ok(JsonSerializer.Serialize(await doctorService.Get(id)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        //[Authorize]
+        public async Task<IActionResult> GetBySubCategoryId(long subCategoryId)
+        {
+            try
+            {
+                return Ok(JsonSerializer.Serialize(await doctorService.GetDoctorBySubCategoryId(subCategoryId)));
             }
             catch (Exception ex)
             {

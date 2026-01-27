@@ -11,7 +11,7 @@ using System.Net;
 namespace GNW_Bazaar.Core.Services
 {
     public class DoctorService(ILogger<DoctorService> logger, IMapper<DoctorDto, Doctor> doctorMapper, IValidationClient validationClient,
-        IMasterDataClient<Doctor> doctorClient, IMapper<Doctor, DoctorDto> doctorDtoMapper, IConfigurationSettings configuration) : IMasterDataService<DoctorDto>
+        IDoctorClient doctorClient, IMapper<Doctor, DoctorDto> doctorDtoMapper, IConfigurationSettings configuration) : IDoctorService
     {
         private const long MaxFileSize = 5 * 1024 * 1024;
 
@@ -157,6 +157,38 @@ namespace GNW_Bazaar.Core.Services
             catch (Exception ex)
             {
                 logger.LogError(ex, "DoctorService.Get");
+                return new()
+                {
+                    ResponseCode = (int)HttpStatusCode.InternalServerError,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<ResponseDto<List<DoctorDto>>> GetDoctorBySubCategoryId(long subCategoryId)
+        {
+            try
+            {
+                if (subCategoryId == 0) throw new Exception("Please enter valid SubCategoryId");
+
+                var doctor = await doctorClient.GetDoctorBySubCategoryId(subCategoryId) ?? throw new Exception($"No doctor found with subcategory Id {subCategoryId}");
+
+                var doctorDtos = new List<DoctorDto>();
+
+                if (doctor != null && doctor.Any())
+                {
+                    doctorDtos = doctor.Select(doctor => doctorDtoMapper.Map(doctor)).ToList();
+                }
+                return new()
+                {
+                    ResponseCode = (int)HttpStatusCode.OK,
+                    Message = "Doctor fetched successfully",
+                    Value = doctorDtos
+                };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "DoctorService.GetDoctorBySubCategoryId");
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.InternalServerError,

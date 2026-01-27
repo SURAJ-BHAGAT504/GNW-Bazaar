@@ -38,8 +38,8 @@ builder.Services.AddScoped<IMasterDataClient<User>, UserClient>();
 builder.Services.AddScoped<IMapper<User, UserDto>, UserDtoMapper>();
 builder.Services.AddScoped<IMapper<UserDto, User>, UserMapper>();
 
-builder.Services.AddScoped<IMasterDataService<DoctorDto>, DoctorService>();
-builder.Services.AddScoped<IMasterDataClient<Doctor>, DoctorClient>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IDoctorClient, DoctorClient>();
 builder.Services.AddScoped<IMapper<DoctorDto, Doctor>, DoctorMapper>();
 builder.Services.AddScoped<IMapper<Doctor, DoctorDto>, DoctorDtoMapper>();
 
