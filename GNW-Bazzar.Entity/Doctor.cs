@@ -7,7 +7,7 @@ namespace GNW_Bazzar.Entity
         [Required]
         public string DoctorName { get; set; } = default!;
         [Required]
-        public long HealthCareSubCategoryId { get; set; }
+        public long HealthCareCategoryId { get; set; }
         [Required]
         public string Qualification { get; set; } = default!;
         [Required]
@@ -16,6 +16,8 @@ namespace GNW_Bazzar.Entity
         public long Experience { get; set; } = default!;
         [Required]
         public string Phonenumber { get; set; } = default!;
+        [Required]
+        public string WhatsAppNumber { get; set; } = default!;
         [Required, EmailAddress]
         public string Email { get; set; } = default!;
         [Required]
@@ -30,6 +32,6 @@ namespace GNW_Bazzar.Entity
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
-        public HealthCareSubCategory healthCareSubCategory { get; set; } = default!;
+        public HealthCareCategory healthCareCategory { get; set; } = default!;
     }
 }

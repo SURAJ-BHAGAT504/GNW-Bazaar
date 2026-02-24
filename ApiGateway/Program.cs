@@ -10,10 +10,19 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddOcelot(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy => policy.WithOrigins("http://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowAngular");
 app.UseAuthorization();
 
 app.MapControllers();

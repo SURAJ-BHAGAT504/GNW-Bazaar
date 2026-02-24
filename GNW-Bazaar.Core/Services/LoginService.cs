@@ -124,6 +124,7 @@ namespace GNW_Bazaar.Core.Services
                         user.Id,
                         user.Email,
                         user.Name,
+                        user.UserRole,
                         accessToken,
                         refreshTokenEntity.Token
                     }

@@ -15,7 +15,7 @@ namespace GNW_Bazaar.Core.Services
     {
         private const long MaxFileSize = 5 * 1024 * 1024;
 
-        public async Task<ResponseDto<long>> Create(DoctorDto entity)
+        public async Task<ResponseDto<long>> Create(DoctorDto entity, string rootPath)
         {
             try
             {
@@ -27,9 +27,8 @@ namespace GNW_Bazaar.Core.Services
 
                 var doctorEntity = doctorMapper.Map(entity);
 
-                string rootPath = Directory.GetCurrentDirectory();
-
                 DateTime dt = DateTime.Now;
+
                 string doctorBaseFolder = Path.Combine(rootPath, configuration.GetHealthCareImagePath().DoctorImagePath);
                 string clinicBaseFolder = Path.Combine(rootPath, configuration.GetHealthCareImagePath().ClinicImagePath);
 
@@ -71,11 +70,12 @@ namespace GNW_Bazaar.Core.Services
                 var doctor = new Doctor
                 {
                     DoctorName = doctorEntity.DoctorName,
-                    HealthCareSubCategoryId = doctorEntity.HealthCareSubCategoryId,
+                    HealthCareCategoryId = doctorEntity.HealthCareCategoryId,
                     Qualification = doctorEntity.Qualification,
                     AboutDoctor = doctorEntity.AboutDoctor,
                     Experience = doctorEntity.Experience,
                     Phonenumber = doctorEntity.Phonenumber,
+                    WhatsAppNumber = doctorEntity.WhatsAppNumber,
                     Email = doctorEntity.Email,
                     Address = doctorEntity.Address,
                     Location = doctorEntity.Location,
@@ -197,7 +197,7 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
-        public async Task<ResponseDto<bool>> Update(DoctorDto entity)
+        public async Task<ResponseDto<bool>> Update(DoctorDto entity, string rootPath)
         {
             try
             {
@@ -209,12 +209,11 @@ namespace GNW_Bazaar.Core.Services
 
                 if (existingDoctor == null) throw new Exception("Doctor not found");
 
-                string rootPath = Directory.GetCurrentDirectory();
-
                 string doctorImageFolder;
+
                 if (!string.IsNullOrEmpty(existingDoctor.DoctorImage))
                 {
-                    doctorImageFolder = Path.GetDirectoryName(existingDoctor.DoctorImage);
+                    doctorImageFolder = Path.GetDirectoryName(Path.Combine(rootPath, existingDoctor.DoctorImage));
                 }
                 else
                 {
@@ -224,9 +223,10 @@ namespace GNW_Bazaar.Core.Services
                 }
 
                 string clinicImageFolder;
+
                 if (!string.IsNullOrEmpty(existingDoctor.ClinicImage))
                 {
-                    clinicImageFolder = Path.GetDirectoryName(existingDoctor.ClinicImage);
+                    clinicImageFolder = Path.GetDirectoryName(Path.Combine(rootPath, existingDoctor.ClinicImage));
                 }
                 else
                 {
@@ -240,27 +240,38 @@ namespace GNW_Bazaar.Core.Services
 
                 if (entity.DoctorImage != null)
                 {
-                    if (File.Exists(existingDoctor.DoctorImage)) File.Delete(existingDoctor.DoctorImage);
+                    if (!string.IsNullOrEmpty(existingDoctor.DoctorImage))
+                    {
+                        var oldDoctorImagePath = Path.Combine(rootPath, existingDoctor.DoctorImage);
+                        if (File.Exists(oldDoctorImagePath))
+                            File.Delete(oldDoctorImagePath);
+                    }
 
                     doctorImagePath = await SaveFile(entity.DoctorImage, doctorImageFolder);
                 }
 
                 if (entity.ClinicImage != null)
                 {
-                    if (File.Exists(existingDoctor.ClinicImage)) File.Delete(existingDoctor.ClinicImage);
+                    if (!string.IsNullOrEmpty(existingDoctor.ClinicImage))
+                    {
+                        var oldClinicImagePath = Path.Combine(rootPath, existingDoctor.ClinicImage);
+                        if (File.Exists(oldClinicImagePath))
+                            File.Delete(oldClinicImagePath);
+                    }
 
                     clinicImagePath = await SaveFile(entity.ClinicImage, clinicImageFolder);
                 }
 
                 existingDoctor.DoctorName = entity.DoctorName;
-                existingDoctor.HealthCareSubCategoryId = entity.HealthCareSubCategoryId;
+                existingDoctor.HealthCareCategoryId = entity.HealthCareCategoryId;
                 existingDoctor.Qualification = entity.Qualification;
                 existingDoctor.AboutDoctor = entity.AboutDoctor;
                 existingDoctor.Experience = entity.Experience;
                 existingDoctor.Phonenumber = entity.Phonenumber;
+                existingDoctor.WhatsAppNumber = entity.WhatsAppNumber;
                 existingDoctor.Email = entity.Email;
                 existingDoctor.Address = entity.Address;
-                existingDoctor.Location = entity.location;
+                existingDoctor.Location = entity.Location;
                 existingDoctor.DoctorImage = doctorImagePath;
                 existingDoctor.ClinicImage = clinicImagePath;
                 existingDoctor.IsActive = entity.IsActive;

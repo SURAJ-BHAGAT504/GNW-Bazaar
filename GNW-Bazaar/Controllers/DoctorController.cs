@@ -8,7 +8,7 @@ namespace GNW_Bazaar.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class DoctorController(IDoctorService doctorService) : ControllerBase
+    public class DoctorController(IDoctorService doctorService, IWebHostEnvironment env) : ControllerBase
     {
         [HttpGet]
         [Authorize]
@@ -39,7 +39,7 @@ namespace GNW_Bazaar.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> GetBySubCategoryId(long subCategoryId)
         {
             try
@@ -58,7 +58,10 @@ namespace GNW_Bazaar.Controllers
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await doctorService.Create(doctorDto)));
+                var rootPath = env.WebRootPath
+                   ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+                return Ok(JsonSerializer.Serialize(await doctorService.Create(doctorDto, rootPath)));
             }
             catch (Exception ex)
             {
@@ -72,7 +75,10 @@ namespace GNW_Bazaar.Controllers
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await doctorService.Update(doctorDto)));
+                var rootPath = env.WebRootPath
+                   ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+                return Ok(JsonSerializer.Serialize(await doctorService.Update(doctorDto, rootPath)));
             }
             catch (Exception ex)
             {

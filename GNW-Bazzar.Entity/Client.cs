@@ -19,7 +19,7 @@ namespace GNW_Bazzar.Entity
         public string Location { get; set; } = default!;
         public string ClientImage { get; set; } = default!;
         [Required]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         [Required]
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }

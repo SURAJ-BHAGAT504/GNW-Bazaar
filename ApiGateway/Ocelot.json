@@ -2,11 +2,11 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/HealthCareCategory/GetAll",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GetAll_HealthCare_Category",
@@ -15,11 +15,11 @@
     //
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Get?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Get_HealthCare_Category/{id}",
@@ -34,11 +34,11 @@
     //
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Create",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Create_HealthCare_Category",
@@ -47,11 +47,11 @@
     //
     {
       "DownstreamPathTemplate": "/HealthCareCategory/Update",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Update_HealthCare_Category",
@@ -61,11 +61,11 @@
     //
     {
       "DownstreamPathTemplate": "/Doctor/GetAll",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GetAll_Doctor",
@@ -74,11 +74,11 @@
     //
     {
       "DownstreamPathTemplate": "/Doctor/Get?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Get_Doctor/{id}",
@@ -93,11 +93,11 @@
     //
     {
       "DownstreamPathTemplate": "/Doctor/Create",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Create_Doctor",
@@ -106,25 +106,24 @@
     //
     {
       "DownstreamPathTemplate": "/Doctor/Update",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Update_Doctor",
       "UpstreamHttpMethod": [ "Put" ]
     },
     //
-    //
     {
       "DownstreamPathTemplate": "/Client/GetAll",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7103
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GetAll_Client",
@@ -133,11 +132,11 @@
     //
     {
       "DownstreamPathTemplate": "/Client/Get?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7103
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Get_Client/{id}",
@@ -152,11 +151,11 @@
     //
     {
       "DownstreamPathTemplate": "/Client/Create",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7103
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Create_Client",
@@ -165,25 +164,128 @@
     //
     {
       "DownstreamPathTemplate": "/Client/Update",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7103
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Update_Client",
       "UpstreamHttpMethod": [ "Put" ]
     },
     //
+    {
+      "DownstreamPathTemplate": "/Sponsor/GetAll",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/GetAll_Sponsor",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Sponsor/GetByAdmin",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/GetByAdmin_Sponsor",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Sponsor/Get?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Get_Sponsor/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "id",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Sponsor/GetByEmail?email={email}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/GetByEmail_Sponsor/{email}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Sponsor/Create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Create_Sponsor",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Sponsor/RecordFrequency?sponsorId={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/UpdateFrequency_Sponsor/{id}", 
+      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "sponsorId",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/Sponsor/Update",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Update_Sponsor",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    //
     //
     {
       "DownstreamPathTemplate": "/CategoryMaster/GetAll",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GetAll_CategoryMaster",
@@ -192,11 +294,11 @@
     //
     {
       "DownstreamPathTemplate": "/CategoryMaster/Get?id={id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Get_CategoryMaster/{id}",
@@ -211,11 +313,11 @@
     //
     {
       "DownstreamPathTemplate": "/CategoryMaster/Create",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Create_CategoryMaster",
@@ -224,11 +326,11 @@
     //
     {
       "DownstreamPathTemplate": "/CategoryMaster/Update",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7066
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Update_CategoryMaster",
@@ -238,11 +340,11 @@
     //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/SignUp",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7178
+          "Host": "gnwbazaar-002-site3.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GNW_SignUp",
@@ -251,11 +353,11 @@
     //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/Login",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7178
+          "Host": "gnwbazaar-002-site3.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GNW_Login",
@@ -264,11 +366,11 @@
     //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/RefreshToken",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7178
+          "Host": "gnwbazaar-002-site3.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GNW_RefreshToken",
@@ -277,25 +379,38 @@
     //
     {
       "DownstreamPathTemplate": "/SignUpAndLogin/Logout",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7178
+          "Host": "gnwbazaar-002-site3.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GNW_Logout",
       "UpstreamHttpMethod": [ "Post" ]
     },
     //
+    {
+      "DownstreamPathTemplate": "/SignUpAndLogin/ForgotPassword",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site3.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/GNW_ForgotPassword",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    //
     //
     {
       "DownstreamPathTemplate": "/Otp/GenerateOtp",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7212
+          "Host": "gnwbazaar-002-site5.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GNW_GenerateOtp",
@@ -304,11 +419,11 @@
     //
     {
       "DownstreamPathTemplate": "/Otp/ValidateOtp",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7212
+          "Host": "gnwbazaar-002-site5.qtempurl.com",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/GNW_ValidateOtp",

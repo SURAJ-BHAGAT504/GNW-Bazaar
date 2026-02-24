@@ -11,5 +11,6 @@ namespace GNW_Bazaar.Core.Interface.Clients
         public Task<Otp?> GetOtp(long userId, string purpose);
         public Task<CategoryMaster?> GetCategoryMaster(string categoryName);
         public Task<Client?> GetClient(string email);
+        public Task<List<Sponsor>> GetSponsoeClient (string email);
     }
 }

@@ -20,8 +20,9 @@ namespace GNW_Bazzar.Dto
         [Required(ErrorMessage = "Please enter location"), StringLength(1000, ErrorMessage = "Location can`t exceed 1000 chars")]
         public string Location { get; set; } = default!;
         public IFormFile? ClientImage { get; set; }
+        public string? ClientImagePath { get; set; } = null;
         [Required]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         [Required]
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }

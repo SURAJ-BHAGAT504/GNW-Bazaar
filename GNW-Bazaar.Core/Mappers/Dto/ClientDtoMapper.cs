@@ -16,6 +16,7 @@ namespace GNW_Bazaar.Core.Mappers.Dto
             Email = input.Email,
             Address = input.Address,
             Location = input.Location,
+            ClientImagePath = input.ClientImage,
             IsActive = input.IsActive,
             CreatedOn = input.CreatedOn,
             UpdatedOn = input.UpdatedOn,

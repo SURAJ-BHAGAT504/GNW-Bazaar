@@ -24,6 +24,9 @@ namespace GNW_Bazzar.Infra.Clients
         public async Task<RefreshToken?> GetRefreshToken(string token) =>
             await dbContext.RefreshTokens.AsNoTracking().Where(t => t.Token == token).FirstOrDefaultAsync();
 
+        public async Task<List<Sponsor>> GetSponsoeClient(string email) =>
+            await dbContext.Sponsors.Where(s => s.Email == email).ToListAsync();
+
         public async Task<User?> GetUser(string email) =>
             await dbContext.Users.AsNoTracking().Where(u => u.Email == email).FirstOrDefaultAsync();
     }

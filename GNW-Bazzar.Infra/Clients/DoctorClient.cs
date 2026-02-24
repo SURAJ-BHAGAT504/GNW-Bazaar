@@ -20,7 +20,7 @@ namespace GNW_Bazzar.Infra.Clients
             await dbContext.Doctors.AsNoTracking().Where(d => d.Id == id).FirstOrDefaultAsync();
 
         public async Task<List<Doctor>> GetDoctorBySubCategoryId(long subCategoryId) =>
-            await dbContext.Doctors.Where(d => d.HealthCareSubCategoryId == subCategoryId).ToListAsync();
+            await dbContext.Doctors.Where(d => d.HealthCareCategoryId == subCategoryId).ToListAsync();
 
         public async Task Update(Doctor entity)
         {

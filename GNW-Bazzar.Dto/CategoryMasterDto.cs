@@ -8,7 +8,7 @@ namespace GNW_Bazzar.Dto
         public string CategoryName { get; set; } = default!;
         public string Description { get; set; } = default!;
         [Required]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         [Required]
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }

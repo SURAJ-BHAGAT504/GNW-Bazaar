@@ -7,7 +7,7 @@ namespace GNW_Bazaar.Core.Interface.Services
         Task<ResponseDto<List<DoctorDto>>> Get();
         Task<ResponseDto<List<DoctorDto>>> GetDoctorBySubCategoryId(long subCategoryId);
         Task<ResponseDto<DoctorDto?>> Get(long id);
-        Task<ResponseDto<long>> Create(DoctorDto entity);
-        Task<ResponseDto<bool>> Update(DoctorDto entity);
+        Task<ResponseDto<long>> Create(DoctorDto entity, string rootPath);
+        Task<ResponseDto<bool>> Update(DoctorDto entity, string rootPath);
     }
 }

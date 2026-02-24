@@ -7,7 +7,7 @@ namespace GNW_Bazzar.Dto
     {
         [Required(ErrorMessage = "Please enter your name"), StringLength(50, ErrorMessage = "Name can`t exceed 50 chars")]
         public string Name { get; set; } = default!;
-        [Required(ErrorMessage = "Please enter uour email"), EmailAddress]
+        [Required(ErrorMessage = "Please enter your email"), EmailAddress]
         public string Email { get; set; } = default!;
         [Required(ErrorMessage = "Please Enter your phone number"), MaxLength(10, ErrorMessage = "Phone number can`t exceed 10 digits")]
         public string PhoneNumber { get; set; } = default!;

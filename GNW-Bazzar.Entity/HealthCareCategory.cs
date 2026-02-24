@@ -13,6 +13,5 @@ namespace GNW_Bazzar.Entity
         public DateTime? UpdatedOn { get; set; }
 
         public CategoryMaster CategoryMaster { get; set; } = default!;
-        public ICollection<HealthCareSubCategory> HealthCareSubCategories { get; set; } = default!;
     }
 }

@@ -29,5 +29,10 @@ namespace GNW_Bazzar.Infra.Settings
             SecurityKey = Configuration().GetValue<string>("Jwt:SecurityKey"),
             ExpiresInDays = Configuration().GetValue<string>("Jwt:ExpiresInDays")
         };
+
+        public SponsorImageDto GetSponsorImagePath() => new()
+        {
+            GetSponsorImagePath = Configuration().GetValue<string>("SponsorImage:SponsorImageFolder")
+        };
     }
 }
