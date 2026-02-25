@@ -92,6 +92,19 @@
     },
     //
     {
+      "DownstreamPathTemplate": "/Doctor/GetBySubCategoryId?subCategoryId={subCategoryId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Get_Doctor_By_SubCategory/{subCategoryId}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
       "DownstreamPathTemplate": "/Doctor/Create",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -255,7 +268,7 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/UpdateFrequency_Sponsor/{id}", 
+      "UpstreamPathTemplate": "/UpdateFrequency_Sponsor/{id}",
       "UpstreamHttpMethod": [ "Post" ],
       "UpstreamQueryStrings": [
         {
