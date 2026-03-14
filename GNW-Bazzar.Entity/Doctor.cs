@@ -7,8 +7,6 @@ namespace GNW_Bazzar.Entity
         [Required]
         public string DoctorName { get; set; } = default!;
         [Required]
-        public long HealthCareCategoryId { get; set; }
-        [Required]
         public string Qualification { get; set; } = default!;
         [Required]
         public string AboutDoctor { get; set; } = default!;
@@ -32,6 +30,6 @@ namespace GNW_Bazzar.Entity
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
-        public HealthCareCategory healthCareCategory { get; set; } = default!;
+        public virtual ICollection<HealthCareCategory> healthCareCategory { get; set; } = new List<HealthCareCategory>();
     }
 }

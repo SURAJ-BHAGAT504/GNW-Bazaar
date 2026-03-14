@@ -44,7 +44,7 @@ namespace GNW_Bazaar.Controllers
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await doctorService.GetDoctorBySubCategoryId(subCategoryId)));
+                return Ok(JsonSerializer.Serialize(await doctorService.GetDoctorByCategoryId(subCategoryId)));
             }
             catch (Exception ex)
             {

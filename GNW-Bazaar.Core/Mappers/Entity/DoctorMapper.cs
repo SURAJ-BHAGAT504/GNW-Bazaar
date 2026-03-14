@@ -10,7 +10,7 @@ namespace GNW_Bazaar.Core.Mappers.Entity
         {
             Id = input.Id,
             DoctorName = input.DoctorName,
-            HealthCareCategoryId = input.HealthCareCategoryId,
+            healthCareCategory = new List<HealthCareCategory>(),
             Qualification = input.Qualification,
             AboutDoctor = input.AboutDoctor,
             Experience = input.Experience,

@@ -13,5 +13,6 @@ namespace GNW_Bazzar.Entity
         public DateTime? UpdatedOn { get; set; }
 
         public CategoryMaster CategoryMaster { get; set; } = default!;
+        public virtual ICollection<Doctor> Doctors { get; set; } = new List<Doctor>();
     }
 }

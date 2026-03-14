@@ -4,6 +4,7 @@ using GNW_Bazzar.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GNW_Bazzar.Entity.Migrations
 {
     [DbContext(typeof(GNW_BazaarDbContext))]
-    partial class GNW_BazaarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260314112134_updatedDoctorTableAsRequirements")]
+    partial class updatedDoctorTableAsRequirements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +74,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 1L,
                             CategoryName = "Health Care",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1306),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2975),
                             Description = "Health Care related services",
                             IsActive = true
                         },
@@ -79,7 +82,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 2L,
                             CategoryName = "Food",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1309),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2980),
                             Description = "",
                             IsActive = true
                         },
@@ -87,7 +90,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 3L,
                             CategoryName = "Shopping",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1311),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2982),
                             Description = "",
                             IsActive = true
                         },
@@ -95,7 +98,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 4L,
                             CategoryName = "Makeovers",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1313),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2983),
                             Description = "",
                             IsActive = true
                         },
@@ -103,7 +106,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 5L,
                             CategoryName = "Events",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1315),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2985),
                             Description = "",
                             IsActive = true
                         },
@@ -111,7 +114,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 6L,
                             CategoryName = "Travel",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1317),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2987),
                             Description = "",
                             IsActive = true
                         },
@@ -119,7 +122,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 7L,
                             CategoryName = "Homecare",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1318),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2988),
                             Description = "",
                             IsActive = true
                         },
@@ -127,7 +130,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 8L,
                             CategoryName = "Property",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1322),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2989),
                             Description = "",
                             IsActive = true
                         },
@@ -135,7 +138,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 9L,
                             CategoryName = "Astrology",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1323),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2991),
                             Description = "",
                             IsActive = true
                         },
@@ -143,7 +146,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 10L,
                             CategoryName = "Education",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1325),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2992),
                             Description = "",
                             IsActive = true
                         },
@@ -151,7 +154,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 11L,
                             CategoryName = "FitLife",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1326),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2994),
                             Description = "",
                             IsActive = true
                         },
@@ -159,7 +162,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 12L,
                             CategoryName = "Pets",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1327),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2995),
                             Description = "",
                             IsActive = true
                         },
@@ -167,7 +170,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 13L,
                             CategoryName = "Relocation",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1328),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2997),
                             Description = "",
                             IsActive = true
                         },
@@ -175,7 +178,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 14L,
                             CategoryName = "Finance",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1330),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(2998),
                             Description = "",
                             IsActive = true
                         },
@@ -183,7 +186,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 15L,
                             CategoryName = "Security",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1331),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3000),
                             Description = "",
                             IsActive = true
                         },
@@ -191,7 +194,7 @@ namespace GNW_Bazzar.Entity.Migrations
                         {
                             Id = 16L,
                             CategoryName = "Service",
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1332),
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3001),
                             Description = "",
                             IsActive = true
                         });
@@ -290,6 +293,9 @@ namespace GNW_Bazzar.Entity.Migrations
                     b.Property<long>("Experience")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("HealthCareCategoryId")
+                        .HasColumnType("bigint");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -351,252 +357,252 @@ namespace GNW_Bazzar.Entity.Migrations
                             Id = 1L,
                             Category = "Anaesthesiology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1501)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3205)
                         },
                         new
                         {
                             Id = 2L,
                             Category = "Cardiology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1504)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3209)
                         },
                         new
                         {
                             Id = 3L,
                             Category = "Critical Care",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1506)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3211)
                         },
                         new
                         {
                             Id = 4L,
                             Category = "Dentistry",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1508)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3212)
                         },
                         new
                         {
                             Id = 5L,
                             Category = "Dermatology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1509)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3215)
                         },
                         new
                         {
                             Id = 6L,
                             Category = "Endocrinology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1511)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3218)
                         },
                         new
                         {
                             Id = 7L,
                             Category = "ENT",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1512)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3221)
                         },
                         new
                         {
                             Id = 8L,
                             Category = "Gastroenterology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1515)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3223)
                         },
                         new
                         {
                             Id = 9L,
                             Category = "General Physician",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1517)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3226)
                         },
                         new
                         {
                             Id = 10L,
                             Category = "General Surgery",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1518)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3228)
                         },
                         new
                         {
                             Id = 11L,
                             Category = "Geriatrics",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1520)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3229)
                         },
                         new
                         {
                             Id = 12L,
                             Category = "Gynecology & Obstetrics",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1523)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3231)
                         },
                         new
                         {
                             Id = 13L,
                             Category = "Hematology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1524)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3233)
                         },
                         new
                         {
                             Id = 14L,
                             Category = "Hepatology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1526)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3234)
                         },
                         new
                         {
                             Id = 15L,
                             Category = "Immunology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1527)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3236)
                         },
                         new
                         {
                             Id = 16L,
                             Category = "Infectious Diseases",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1529)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3237)
                         },
                         new
                         {
                             Id = 17L,
                             Category = "Internal Medicine",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1531)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3239)
                         },
                         new
                         {
                             Id = 18L,
                             Category = "Interventional Spine & Pain Medicine",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1532)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3240)
                         },
                         new
                         {
                             Id = 19L,
                             Category = "IVF",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1533)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3242)
                         },
                         new
                         {
                             Id = 20L,
                             Category = "Nephrology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1535)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3243)
                         },
                         new
                         {
                             Id = 21L,
                             Category = "Neurology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1536)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3245)
                         },
                         new
                         {
                             Id = 22L,
                             Category = "Nuclear Medicine",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1538)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3247)
                         },
                         new
                         {
                             Id = 23L,
                             Category = "Nutrition & Health",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1539)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3248)
                         },
                         new
                         {
                             Id = 24L,
                             Category = "Oncology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1540)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3250)
                         },
                         new
                         {
                             Id = 25L,
                             Category = "Ophthalmology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1542)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3252)
                         },
                         new
                         {
                             Id = 26L,
                             Category = "Orthopedics",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1543)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3253)
                         },
                         new
                         {
                             Id = 27L,
                             Category = "Pathology & Laboratory Medicine",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1544)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3255)
                         },
                         new
                         {
                             Id = 28L,
                             Category = "Pediatrics",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1546)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3256)
                         },
                         new
                         {
                             Id = 29L,
                             Category = "Physiotherapy & Rehabilitation",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1547)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3258)
                         },
                         new
                         {
                             Id = 30L,
                             Category = "Plastic & Reconstructive Surgery",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1550)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3259)
                         },
                         new
                         {
                             Id = 31L,
                             Category = "Psychology & Psychiatry",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1551)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3261)
                         },
                         new
                         {
                             Id = 32L,
                             Category = "Pulmonology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1553)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3262)
                         },
                         new
                         {
                             Id = 33L,
                             Category = "Radiology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1554)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3264)
                         },
                         new
                         {
                             Id = 34L,
                             Category = "Rheumatology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1555)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3377)
                         },
                         new
                         {
                             Id = 35L,
                             Category = "Robotic Surgery",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1557)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3379)
                         },
                         new
                         {
                             Id = 36L,
                             Category = "Urology",
                             CategoryMasterId = 1L,
-                            CreatedOn = new DateTime(2026, 3, 14, 11, 56, 15, 944, DateTimeKind.Utc).AddTicks(1558)
+                            CreatedOn = new DateTime(2026, 3, 14, 11, 21, 32, 702, DateTimeKind.Utc).AddTicks(3380)
                         });
                 });
 

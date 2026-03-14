@@ -53,6 +53,24 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy.WithOrigins(
+                    "http://gnwbazaar.in",
+                    "https://gnwbazaar.in",
+                    "http://gnwbazaar-002-site2.qtempurl.com",
+                    "https://gnwbazaar-002-site2.qtempurl.com",
+                    "http://localhost:4200"
+                )
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
+});
+
 
 var app = builder.Build();
 
@@ -63,6 +81,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAngular");
 
 app.UseAuthentication();
 app.UseAuthorization();

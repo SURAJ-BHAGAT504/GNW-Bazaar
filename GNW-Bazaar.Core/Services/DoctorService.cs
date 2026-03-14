@@ -11,7 +11,7 @@ using System.Net;
 namespace GNW_Bazaar.Core.Services
 {
     public class DoctorService(ILogger<DoctorService> logger, IMapper<DoctorDto, Doctor> doctorMapper, IValidationClient validationClient,
-        IDoctorClient doctorClient, IMapper<Doctor, DoctorDto> doctorDtoMapper, IConfigurationSettings configuration) : IDoctorService
+        IDoctorClient doctorClient, IMapper<Doctor, DoctorDto> doctorDtoMapper, IConfigurationSettings configuration, IMasterDataClient<HealthCareCategory> healthcareCategoryClient) : IDoctorService
     {
         private const long MaxFileSize = 5 * 1024 * 1024;
 
@@ -70,7 +70,7 @@ namespace GNW_Bazaar.Core.Services
                 var doctor = new Doctor
                 {
                     DoctorName = doctorEntity.DoctorName,
-                    HealthCareCategoryId = doctorEntity.HealthCareCategoryId,
+                    healthCareCategory = new List<HealthCareCategory>(),
                     Qualification = doctorEntity.Qualification,
                     AboutDoctor = doctorEntity.AboutDoctor,
                     Experience = doctorEntity.Experience,
@@ -85,6 +85,18 @@ namespace GNW_Bazaar.Core.Services
                     CreatedOn = DateTime.Now,
                     UpdatedOn = DateTime.Now
                 };
+
+                if (entity.HealthCareCategoryIds != null && entity.HealthCareCategoryIds.Any())
+                {
+                    foreach (var HCatId in entity.HealthCareCategoryIds)
+                    {
+                        var category = await healthcareCategoryClient.Get(HCatId);
+                        if (category != null)
+                        {
+                            doctor.healthCareCategory.Add(category);
+                        }
+                    }
+                }
 
                 await doctorClient.Create(doctor);
 
@@ -165,13 +177,13 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
-        public async Task<ResponseDto<List<DoctorDto>>> GetDoctorBySubCategoryId(long subCategoryId)
+        public async Task<ResponseDto<List<DoctorDto>>> GetDoctorByCategoryId(long subCategoryId)
         {
             try
             {
                 if (subCategoryId == 0) throw new Exception("Please enter valid SubCategoryId");
 
-                var doctor = await doctorClient.GetDoctorBySubCategoryId(subCategoryId) ?? throw new Exception($"No doctor found with subcategory Id {subCategoryId}");
+                var doctor = await doctorClient.GetDoctorByCategoryId(subCategoryId) ?? throw new Exception($"No doctor found with subcategory Id {subCategoryId}");
 
                 var doctorDtos = new List<DoctorDto>();
 
@@ -263,7 +275,6 @@ namespace GNW_Bazaar.Core.Services
                 }
 
                 existingDoctor.DoctorName = entity.DoctorName;
-                existingDoctor.HealthCareCategoryId = entity.HealthCareCategoryId;
                 existingDoctor.Qualification = entity.Qualification;
                 existingDoctor.AboutDoctor = entity.AboutDoctor;
                 existingDoctor.Experience = entity.Experience;
@@ -276,6 +287,20 @@ namespace GNW_Bazaar.Core.Services
                 existingDoctor.ClinicImage = clinicImagePath;
                 existingDoctor.IsActive = entity.IsActive;
                 existingDoctor.UpdatedOn = DateTime.Now;
+
+                existingDoctor.healthCareCategory.Clear();
+
+                if (entity.HealthCareCategoryIds != null && entity.HealthCareCategoryIds.Any())
+                {
+                    foreach (var HCatId in entity.HealthCareCategoryIds)
+                    {
+                        var category = await healthcareCategoryClient.Get(HCatId);
+                        if (category != null)
+                        {
+                            existingDoctor.healthCareCategory.Add(category);
+                        }
+                    }
+                }
 
                 await doctorClient.Update(existingDoctor);
 

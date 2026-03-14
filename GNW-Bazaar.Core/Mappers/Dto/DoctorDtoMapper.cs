@@ -10,7 +10,7 @@ namespace GNW_Bazaar.Core.Mappers.Dto
         {
             Id = input.Id,
             DoctorName = input.DoctorName,
-            HealthCareCategoryId = input.HealthCareCategoryId,
+            HealthCareCategoryIds = input.healthCareCategory?.Select(x=> x.Id).ToList() ?? new List<long>(),
             Qualification = input.Qualification,
             AboutDoctor = input.AboutDoctor,
             Experience = input.Experience,

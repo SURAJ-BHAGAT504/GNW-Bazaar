@@ -7,8 +7,8 @@ namespace GNW_Bazzar.Dto
     {
         [Required(ErrorMessage = "Please enter doctor name"), StringLength(50, ErrorMessage = "Name can`t exceed 50 chars")]
         public string DoctorName { get; set; } = default!;
-        [Required(ErrorMessage = "Please enter healthcare subcategory")]
-        public long HealthCareCategoryId { get; set; }
+        [Required(ErrorMessage = "Please enter healthcare category")]
+        public List<long> HealthCareCategoryIds { get; set; } = new List<long>();
         [Required(ErrorMessage = "Please enter qualification")]
         public string Qualification { get; set; } = default!;
         [Required(ErrorMessage = "Please enter about doctor")]
