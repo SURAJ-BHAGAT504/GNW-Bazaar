@@ -40,11 +40,11 @@ namespace GNW_Bazaar.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetBySubCategoryId(long subCategoryId)
+        public async Task<IActionResult> GetByCategoryId(long CategoryId)
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await doctorService.GetDoctorByCategoryId(subCategoryId)));
+                return Ok(JsonSerializer.Serialize(await doctorService.GetDoctorByCategoryId(CategoryId)));
             }
             catch (Exception ex)
             {

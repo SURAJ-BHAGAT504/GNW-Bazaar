@@ -92,7 +92,7 @@
     },
     //
     {
-      "DownstreamPathTemplate": "/Doctor/GetBySubCategoryId?subCategoryId={subCategoryId}",
+      "DownstreamPathTemplate": "/Doctor/GetByCategoryId?CategoryId={CategoryId}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -100,7 +100,7 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/Get_Doctor_By_SubCategory/{subCategoryId}",
+      "UpstreamPathTemplate": "/Get_Doctor_By_Category/{CategoryId}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     //
