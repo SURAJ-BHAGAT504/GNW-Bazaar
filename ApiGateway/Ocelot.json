@@ -441,6 +441,45 @@
       ],
       "UpstreamPathTemplate": "/GNW_ValidateOtp",
       "UpstreamHttpMethod": [ "Post" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/DoctorImage/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/DoctorImage/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/ClinicImage/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site4.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/ClinicImage/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/SponsorImage/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/SponsorImage/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
     }
   ]
 }

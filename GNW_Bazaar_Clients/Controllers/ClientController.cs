@@ -40,7 +40,7 @@ namespace GNW_Bazaar_Clients.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Create(ClientDto clientDto)
+        public async Task<IActionResult> Create([FromForm] ClientDto clientDto)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace GNW_Bazaar_Clients.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> Update(ClientDto clientDto)
+        public async Task<IActionResult> Update([FromForm] ClientDto clientDto)
         {
             try
             {

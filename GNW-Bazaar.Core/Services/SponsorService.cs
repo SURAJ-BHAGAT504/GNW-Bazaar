@@ -15,22 +15,34 @@ namespace GNW_Bazaar.Core.Services
     {
         private const long MaxFileSize = 5 * 1024 * 1024;
 
-        public async Task<ResponseDto<long>> Create(SponsorDto entity)
+        public async Task<ResponseDto<long>> Create(SponsorDto entity, string rootPath)
         {
             try
             {
                 Validator.ValidateObject(entity, new ValidationContext(entity), true);
 
-                var sponsorEntity = sponsorMapper.Map(entity);
-                string rootPath = Directory.GetCurrentDirectory();
-                DateTime dt = DateTime.Now;
+                var existingSponsorsByEmail = await validationClient.GetSponsoeClient(entity.Email);
+                if (existingSponsorsByEmail != null && existingSponsorsByEmail.Any())
+                {
+                    foreach (var oldSponsor in existingSponsorsByEmail)
+                    {
+                        if (!string.IsNullOrEmpty(oldSponsor.SponsorFile) && File.Exists(oldSponsor.SponsorFile))
+                        {
+                            try { File.Delete(oldSponsor.SponsorFile); }
+                            catch (Exception ex) { logger.LogWarning(ex, "Could not delete old file during new creation"); }
+                        }
+                    }
+                }
 
+                DateTime dt = DateTime.Now;
                 string sponsorBaseFolder = Path.Combine(rootPath, configuration.GetSponsorImagePath().GetSponsorImagePath);
                 string safeClientName = entity.ClientName.Replace(" ", "");
+                string sponsorProduct = entity.SponsorProduct.Replace(" ", "");
 
                 string uploadFolder = Path.Combine(
                     sponsorBaseFolder,
                     safeClientName,
+                    sponsorProduct,
                     dt.Year.ToString(),
                     dt.ToString("MMM-yyyy"),
                     dt.ToString("dd-MMM")
@@ -50,6 +62,7 @@ namespace GNW_Bazaar.Core.Services
                     Email = entity.Email,
                     SponsorType = entity.SponsorType,
                     SponsorFile = sponsorFilePath,
+                    SponsorProduct = entity.SponsorProduct,
                     StartDate = entity.StartDate,
                     EndDate = entity.EndDate,
                     CreatedBy = entity.CreatedBy,
@@ -69,11 +82,7 @@ namespace GNW_Bazaar.Core.Services
             catch (Exception ex)
             {
                 logger.LogError(ex, "SponsorService.Create");
-                return new ResponseDto<long>
-                {
-                    ResponseCode = (int)HttpStatusCode.InternalServerError,
-                    Message = ex.Message
-                };
+                return new ResponseDto<long> { ResponseCode = (int)HttpStatusCode.InternalServerError, Message = ex.Message };
             }
         }
 
@@ -127,7 +136,7 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
-        public async Task<ResponseDto<bool>> Update(SponsorDto entity)
+        public async Task<ResponseDto<bool>> Update(SponsorDto entity, string rootPath)
         {
             try
             {
@@ -140,12 +149,29 @@ namespace GNW_Bazaar.Core.Services
 
                 if (entity.SponsorFile != null)
                 {
-                    if (File.Exists(existingSponsor.SponsorFile))
+                    if (!string.IsNullOrEmpty(existingSponsor.SponsorFile) && File.Exists(existingSponsor.SponsorFile))
+                    {
                         File.Delete(existingSponsor.SponsorFile);
+                    }
 
-                    string rootPath = Directory.GetCurrentDirectory();
-                    DateTime dt = DateTime.Now;
-                    string uploadFolder = Path.Combine(rootPath, configuration.GetSponsorImagePath().GetSponsorImagePath, entity.ClientName.Replace(" ", ""), dt.ToString("yyyy-MM-dd"));
+                    string uploadFolder;
+                    if (!string.IsNullOrEmpty(existingSponsor.SponsorFile))
+                    {
+                        uploadFolder = Path.GetDirectoryName(existingSponsor.SponsorFile);
+                    }
+                    else
+                    {
+                        DateTime dt = DateTime.Now;
+                        uploadFolder = Path.Combine(
+                            rootPath,
+                            configuration.GetSponsorImagePath().GetSponsorImagePath,
+                            entity.ClientName.Replace(" ", ""),
+                            entity.SponsorProduct.Replace(" ", ""),
+                            dt.Year.ToString(),
+                            dt.ToString("MMM-yyyy"),
+                            dt.ToString("dd-MMM")
+                        );
+                    }
 
                     sponsorFilePath = await SaveFile(entity.SponsorFile, uploadFolder);
                 }
@@ -155,19 +181,25 @@ namespace GNW_Bazaar.Core.Services
                 existingSponsor.PhoneNumber = entity.PhoneNumber;
                 existingSponsor.Email = entity.Email;
                 existingSponsor.SponsorType = entity.SponsorType;
-                existingSponsor.SponsorFile = sponsorFilePath;
+                existingSponsor.SponsorProduct = entity.SponsorProduct;
                 existingSponsor.StartDate = entity.StartDate;
                 existingSponsor.EndDate = entity.EndDate;
+                existingSponsor.SponsorFile = sponsorFilePath; 
                 existingSponsor.UpdatedOn = DateTime.Now;
 
                 await sponsorClient.Update(existingSponsor);
 
-                return new ResponseDto<bool> { ResponseCode = (int)HttpStatusCode.OK, Message = "Sponsor updated successfully", Value = true };
+                return new ResponseDto<bool>
+                {
+                    ResponseCode = (int)HttpStatusCode.OK,
+                    Message = "Sponsor updated successfully",
+                    Value = true
+                };
             }
             catch (Exception ex)
             {
                 logger.LogError(ex, "SponsorService.Update");
-                return new() { ResponseCode = (int)HttpStatusCode.InternalServerError, Message = ex.Message };
+                return new ResponseDto<bool> { ResponseCode = (int)HttpStatusCode.InternalServerError, Message = ex.Message };
             }
         }
 
@@ -246,7 +278,7 @@ namespace GNW_Bazaar.Core.Services
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
 
-            string fileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
+            string fileName = $"{Path.GetFileName(file.FileName)}";
             string filePath = Path.Combine(folder, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))

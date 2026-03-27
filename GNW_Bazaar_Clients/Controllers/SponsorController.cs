@@ -8,7 +8,7 @@ namespace GNW_Bazaar_Clients.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class SponsorController(ISponsorService sponsorService) : ControllerBase
+    public class SponsorController(ISponsorService sponsorService, IWebHostEnvironment env) : ControllerBase
     {
         [HttpGet]
         [Authorize]
@@ -68,11 +68,14 @@ namespace GNW_Bazaar_Clients.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Create(SponsorDto sponsorDto)
+        public async Task<IActionResult> Create([FromForm] SponsorDto sponsorDto)
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await sponsorService.Create(sponsorDto)));
+                var rootPath = env.WebRootPath
+                   ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+                return Ok(JsonSerializer.Serialize(await sponsorService.Create(sponsorDto, rootPath)));
             }
             catch (Exception ex)
             {
@@ -96,11 +99,14 @@ namespace GNW_Bazaar_Clients.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> Update(SponsorDto sponsorDto)
+        public async Task<IActionResult> Update([FromForm] SponsorDto sponsorDto)
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await sponsorService.Update(sponsorDto)));
+                var rootPath = env.WebRootPath
+                   ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+                return Ok(JsonSerializer.Serialize(await sponsorService.Update(sponsorDto, rootPath)));
             }
             catch (Exception ex)
             {

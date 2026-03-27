@@ -14,6 +14,8 @@ namespace GNW_Bazzar.Entity
         public string Email { get; set; } = default!;
         public string SponsorFile { get; set; } = default!;
         [Required]
+        public string SponsorProduct { get; set; } = default!;
+        [Required]
         public string SponsorType { get; set; } = default!;
         [Required]
         public DateTime StartDate { get; set; }

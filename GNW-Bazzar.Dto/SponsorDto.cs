@@ -13,8 +13,9 @@ namespace GNW_Bazzar.Dto
         public string PhoneNumber { get; set; } = default!;
         [Required(ErrorMessage = "Please enter client email"), EmailAddress]
         public string Email { get; set; } = default!;
-        [Required]
         public IFormFile? SponsorFile { get; set; } = default!;
+        [Required]
+        public string SponsorProduct { get; set; } = default!;
         public string? SponsorFilePath { get; set; } = null;
         [Required]
         public string SponsorType { get; set; } = default!;

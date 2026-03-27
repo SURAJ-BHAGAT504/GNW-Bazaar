@@ -14,6 +14,7 @@ namespace GNW_Bazaar.Core.Mappers.Entity
             PhoneNumber = input.PhoneNumber,
             Email = input.Email,
             SponsorType = input.SponsorType,
+            SponsorFile = input.SponsorFilePath,
             StartDate = input.StartDate,
             EndDate = input.EndDate,
             CreatedBy = input.CreatedBy,
