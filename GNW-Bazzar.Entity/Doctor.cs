@@ -7,23 +7,19 @@ namespace GNW_Bazzar.Entity
         [Required]
         public string DoctorName { get; set; } = default!;
         [Required]
-        public string Qualification { get; set; } = default!;
-        [Required]
         public string AboutDoctor { get; set; } = default!;
-        [Required]
-        public long Experience { get; set; } = default!;
         [Required]
         public string Phonenumber { get; set; } = default!;
         [Required]
         public string WhatsAppNumber { get; set; } = default!;
-        [Required, EmailAddress]
-        public string Email { get; set; } = default!;
         [Required]
         public string Address { get; set; } = default!;
         [Required]
         public string Location { get; set; } = default!;
         public string DoctorImage { get; set; } = default!;
         public string ClinicImage { get; set; } = default!;
+        [Required]
+        public DateTime EndDate { get; set; }
         [Required]
         public bool IsActive { get; set; } = true;
         [Required]

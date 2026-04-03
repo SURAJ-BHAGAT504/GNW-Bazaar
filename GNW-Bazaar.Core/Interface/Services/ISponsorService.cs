@@ -9,7 +9,7 @@ namespace GNW_Bazaar.Core.Interface.Services
         Task<ResponseDto<SponsorDto?>> Get(long id);
         Task<ResponseDto<long>> Create(SponsorDto entity, string rootPath);
         Task<ResponseDto<bool>> Update(SponsorDto entity, string rootPath);
-        Task<ResponseDto<List<SponsorDto>>> GetByEmail(string email);
+        //Task<ResponseDto<List<SponsorDto>>> GetByEmail(string email);
         //Task<ResponseDto<bool>> RecordFrequency(long sponsorId);
     }
 }

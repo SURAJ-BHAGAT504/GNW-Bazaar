@@ -21,21 +21,22 @@ namespace GNW_Bazaar.Core.Services
             {
                 Validator.ValidateObject(entity, new ValidationContext(entity), true);
 
-                var existingSponsorsByEmail = await validationClient.GetSponsoeClient(entity.Email);
-                if (existingSponsorsByEmail != null && existingSponsorsByEmail.Any())
+                var existingSponsors = await validationClient.GetByClientAndProduct(entity.ClientName, entity.SponsorProduct);
+
+                if (existingSponsors != null && existingSponsors.Any())
                 {
-                    foreach (var oldSponsor in existingSponsorsByEmail)
+                    return new ResponseDto<long>
                     {
-                        if (!string.IsNullOrEmpty(oldSponsor.SponsorFile) && File.Exists(oldSponsor.SponsorFile))
-                        {
-                            try { File.Delete(oldSponsor.SponsorFile); }
-                            catch (Exception ex) { logger.LogWarning(ex, "Could not delete old file during new creation"); }
-                        }
-                    }
+                        ResponseCode = (int)HttpStatusCode.BadRequest,
+                        Message = "Sponsor already exists for the same client and product"
+                    };
                 }
 
+
                 DateTime dt = DateTime.Now;
+
                 string sponsorBaseFolder = Path.Combine(rootPath, configuration.GetSponsorImagePath().GetSponsorImagePath);
+
                 string safeClientName = entity.ClientName.Replace(" ", "");
                 string sponsorProduct = entity.SponsorProduct.Replace(" ", "");
 
@@ -48,7 +49,8 @@ namespace GNW_Bazaar.Core.Services
                     dt.ToString("dd-MMM")
                 );
 
-                string sponsorFilePath = "";
+                string sponsorFilePath = string.Empty;
+
                 if (entity.SponsorFile != null)
                 {
                     sponsorFilePath = await SaveFile(entity.SponsorFile, uploadFolder);
@@ -59,7 +61,6 @@ namespace GNW_Bazaar.Core.Services
                     ClientName = entity.ClientName,
                     Description = entity.Description,
                     PhoneNumber = entity.PhoneNumber,
-                    Email = entity.Email,
                     SponsorType = entity.SponsorType,
                     SponsorFile = sponsorFilePath,
                     SponsorProduct = entity.SponsorProduct,
@@ -141,9 +142,24 @@ namespace GNW_Bazaar.Core.Services
             try
             {
                 Validator.ValidateObject(entity, new ValidationContext(entity), true);
+
                 if (entity.Id == 0) throw new Exception("Please enter valid Id");
 
                 var existingSponsor = await sponsorClient.Get(entity.Id) ?? throw new Exception("Sponsor not found");
+
+                var existingSponsors = await validationClient.GetByClientAndProduct(entity.ClientName, entity.SponsorProduct);
+
+                var duplicate = existingSponsors?.FirstOrDefault(x => x.Id != entity.Id);
+
+                if (duplicate != null)
+                {
+                    return new ResponseDto<bool>
+                    {
+                        ResponseCode = (int)HttpStatusCode.BadRequest,
+                        Message = "Sponsor already exists for the same client and product",
+                        Value = false
+                    };
+                }
 
                 string sponsorFilePath = existingSponsor.SponsorFile;
 
@@ -151,10 +167,18 @@ namespace GNW_Bazaar.Core.Services
                 {
                     if (!string.IsNullOrEmpty(existingSponsor.SponsorFile) && File.Exists(existingSponsor.SponsorFile))
                     {
-                        File.Delete(existingSponsor.SponsorFile);
+                        try
+                        {
+                            File.Delete(existingSponsor.SponsorFile);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.LogWarning(ex, "Failed to delete old sponsor file");
+                        }
                     }
 
                     string uploadFolder;
+
                     if (!string.IsNullOrEmpty(existingSponsor.SponsorFile))
                     {
                         uploadFolder = Path.GetDirectoryName(existingSponsor.SponsorFile);
@@ -179,12 +203,11 @@ namespace GNW_Bazaar.Core.Services
                 existingSponsor.ClientName = entity.ClientName;
                 existingSponsor.Description = entity.Description;
                 existingSponsor.PhoneNumber = entity.PhoneNumber;
-                existingSponsor.Email = entity.Email;
                 existingSponsor.SponsorType = entity.SponsorType;
                 existingSponsor.SponsorProduct = entity.SponsorProduct;
                 existingSponsor.StartDate = entity.StartDate;
                 existingSponsor.EndDate = entity.EndDate;
-                existingSponsor.SponsorFile = sponsorFilePath; 
+                existingSponsor.SponsorFile = sponsorFilePath;
                 existingSponsor.UpdatedOn = DateTime.Now;
 
                 await sponsorClient.Update(existingSponsor);
@@ -203,43 +226,43 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
-        public async Task<ResponseDto<List<SponsorDto>>> GetByEmail(string email)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(email))
-                {
-                    throw new Exception("Email is required to fetch sponsors.");
-                }
+        //public async Task<ResponseDto<List<SponsorDto>>> GetByEmail(string email)
+        //{
+        //    try
+        //    {
+        //        if (string.IsNullOrEmpty(email))
+        //        {
+        //            throw new Exception("Email is required to fetch sponsors.");
+        //        }
 
-                var sponsors = await validationClient.GetSponsoeClient(email);
+        //        var sponsors = await validationClient.GetSponsoeClient(email);
 
-                var sponsorDtos = new List<SponsorDto>();
+        //        var sponsorDtos = new List<SponsorDto>();
 
-                if (sponsors != null && sponsors.Any())
-                {
-                    sponsorDtos = sponsors.Select(s => sponsorDtoMapper.Map(s)).ToList();
-                }
+        //        if (sponsors != null && sponsors.Any())
+        //        {
+        //            sponsorDtos = sponsors.Select(s => sponsorDtoMapper.Map(s)).ToList();
+        //        }
 
-                return new ResponseDto<List<SponsorDto>>
-                {
-                    ResponseCode = (int)HttpStatusCode.OK,
-                    Message = sponsorDtos.Any()
-                        ? "Sponsors fetched successfully"
-                        : "No sponsors found for the provided email",
-                    Value = sponsorDtos
-                };
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "SponsorService.GetByEmail");
-                return new ResponseDto<List<SponsorDto>>
-                {
-                    ResponseCode = (int)HttpStatusCode.InternalServerError,
-                    Message = ex.Message
-                };
-            }
-        }
+        //        return new ResponseDto<List<SponsorDto>>
+        //        {
+        //            ResponseCode = (int)HttpStatusCode.OK,
+        //            Message = sponsorDtos.Any()
+        //                ? "Sponsors fetched successfully"
+        //                : "No sponsors found for the provided email",
+        //            Value = sponsorDtos
+        //        };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.LogError(ex, "SponsorService.GetByEmail");
+        //        return new ResponseDto<List<SponsorDto>>
+        //        {
+        //            ResponseCode = (int)HttpStatusCode.InternalServerError,
+        //            Message = ex.Message
+        //        };
+        //    }
+        //}
 
         //public async Task<ResponseDto<bool>> RecordFrequency(long sponsorId)
         //{

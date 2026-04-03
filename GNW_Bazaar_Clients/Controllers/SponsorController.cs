@@ -52,20 +52,6 @@ namespace GNW_Bazaar_Clients.Controllers
             }
         }
 
-        [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetByEmail(string email)
-        {
-            try
-            {
-                return Ok(JsonSerializer.Serialize(await sponsorService.GetByEmail(email)));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create([FromForm] SponsorDto sponsorDto)

@@ -11,8 +11,6 @@ namespace GNW_Bazzar.Dto
         public string Description { get; set; } = default!;
         [Required(ErrorMessage = "Please Enter client phone number"), MaxLength(10, ErrorMessage = "Phone number can`t exceed 10 digits")]
         public string PhoneNumber { get; set; } = default!;
-        [Required(ErrorMessage = "Please enter client email"), EmailAddress]
-        public string Email { get; set; } = default!;
         public IFormFile? SponsorFile { get; set; } = default!;
         [Required]
         public string SponsorProduct { get; set; } = default!;

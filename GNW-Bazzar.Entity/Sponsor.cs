@@ -10,8 +10,6 @@ namespace GNW_Bazzar.Entity
         public string Description { get; set; } = default!;
         [Required, Phone]
         public string PhoneNumber { get; set; } = default!;
-        [Required, EmailAddress]
-        public string Email { get; set; } = default!;
         public string SponsorFile { get; set; } = default!;
         [Required]
         public string SponsorProduct { get; set; } = default!;

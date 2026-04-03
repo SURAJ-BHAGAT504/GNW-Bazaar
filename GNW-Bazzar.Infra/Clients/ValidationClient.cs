@@ -6,14 +6,14 @@ namespace GNW_Bazzar.Infra.Clients
 {
     public class ValidationClient(GNW_BazaarDbContext dbContext) : IValidationClient
     {
+        public Task<List<Sponsor>> GetByClientAndProduct(string clientName, string sponsorProduct) =>
+            dbContext.Sponsors.AsNoTracking().Where(s => s.ClientName.ToLower() == clientName.ToLower() && s.SponsorProduct.ToLower() == sponsorProduct.ToLower()).ToListAsync();
+
         public async Task<CategoryMaster?> GetCategoryMaster(string categoryName) =>
             await dbContext.CategoryMasters.AsNoTracking().Where(c => c.CategoryName == categoryName).FirstOrDefaultAsync();
 
         public async Task<Client?> GetClient(string email) =>
             await dbContext.Clients.AsNoTracking().Where(c => c.Email == email).FirstOrDefaultAsync();
-
-        public async Task<Doctor?> GetDoctor(string email) =>
-            await dbContext.Doctors.AsNoTracking().Where(d => d.Email == email).FirstOrDefaultAsync();
 
         public async Task<HealthCareCategory?> GetHealthCareCategory(string category) =>
             await dbContext.HealthCareCategories.Where(h => h.Category == category).FirstOrDefaultAsync();
@@ -23,9 +23,6 @@ namespace GNW_Bazzar.Infra.Clients
 
         public async Task<RefreshToken?> GetRefreshToken(string token) =>
             await dbContext.RefreshTokens.AsNoTracking().Where(t => t.Token == token).FirstOrDefaultAsync();
-
-        public async Task<List<Sponsor>> GetSponsoeClient(string email) =>
-            await dbContext.Sponsors.Where(s => s.Email == email).ToListAsync();
 
         public async Task<User?> GetUser(string email) =>
             await dbContext.Users.AsNoTracking().Where(u => u.Email == email).FirstOrDefaultAsync();

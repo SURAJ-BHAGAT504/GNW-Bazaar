@@ -21,10 +21,6 @@ namespace GNW_Bazaar.Core.Services
             {
                 Validator.ValidateObject(entity, new ValidationContext(entity), true);
 
-                var doctorExist = await validationClient.GetDoctor(entity.Email);
-
-                if (doctorExist != null) throw new Exception("Doctor already exists");
-
                 var doctorEntity = doctorMapper.Map(entity);
 
                 DateTime dt = DateTime.Now;
@@ -71,16 +67,14 @@ namespace GNW_Bazaar.Core.Services
                 {
                     DoctorName = doctorEntity.DoctorName,
                     healthCareCategory = new List<HealthCareCategory>(),
-                    Qualification = doctorEntity.Qualification,
                     AboutDoctor = doctorEntity.AboutDoctor,
-                    Experience = doctorEntity.Experience,
                     Phonenumber = doctorEntity.Phonenumber,
                     WhatsAppNumber = doctorEntity.WhatsAppNumber,
-                    Email = doctorEntity.Email,
                     Address = doctorEntity.Address,
                     Location = doctorEntity.Location,
                     DoctorImage = doctorImagePath,
                     ClinicImage = clinicImagePath,
+                    EndDate = doctorEntity.EndDate,
                     IsActive = true,
                     CreatedOn = DateTime.Now,
                     UpdatedOn = DateTime.Now
@@ -275,16 +269,14 @@ namespace GNW_Bazaar.Core.Services
                 }
 
                 existingDoctor.DoctorName = entity.DoctorName;
-                existingDoctor.Qualification = entity.Qualification;
                 existingDoctor.AboutDoctor = entity.AboutDoctor;
-                existingDoctor.Experience = entity.Experience;
                 existingDoctor.Phonenumber = entity.Phonenumber;
                 existingDoctor.WhatsAppNumber = entity.WhatsAppNumber;
-                existingDoctor.Email = entity.Email;
                 existingDoctor.Address = entity.Address;
                 existingDoctor.Location = entity.Location;
                 existingDoctor.DoctorImage = doctorImagePath;
                 existingDoctor.ClinicImage = clinicImagePath;
+                existingDoctor.EndDate = entity.EndDate;
                 existingDoctor.IsActive = entity.IsActive;
                 existingDoctor.UpdatedOn = DateTime.Now;
 

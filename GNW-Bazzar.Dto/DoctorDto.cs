@@ -9,18 +9,12 @@ namespace GNW_Bazzar.Dto
         public string DoctorName { get; set; } = default!;
         [Required(ErrorMessage = "Please enter healthcare category")]
         public List<long> HealthCareCategoryIds { get; set; } = new List<long>();
-        [Required(ErrorMessage = "Please enter qualification")]
-        public string Qualification { get; set; } = default!;
         [Required(ErrorMessage = "Please enter about doctor")]
         public string AboutDoctor { get; set; } = default!;
-        [Required(ErrorMessage = "Please enter experience")]
-        public long Experience { get; set; } = default!;
         [Required(ErrorMessage = "Please Enter your phone number"), MaxLength(10, ErrorMessage = "Phone number can`t exceed 10 digits")]
         public string Phonenumber { get; set; } = default!;
         [Required(ErrorMessage = "Please Enter your whats app number"), MaxLength(10, ErrorMessage = "whats app number can`t exceed 10 digits")]
         public string WhatsAppNumber { get; set; } = default!;
-        [Required(ErrorMessage = "Please enter your email"), EmailAddress]
-        public string Email { get; set; } = default!;
         [Required(ErrorMessage = "Please enter your address"), StringLength(500, ErrorMessage = "Address can`t exceed 500 chars")]
         public string Address { get; set; } = default!;
         [Required(ErrorMessage = "Please enter location"), StringLength(1000, ErrorMessage = "Location can`t exceed 1000 chars")]
@@ -29,6 +23,8 @@ namespace GNW_Bazzar.Dto
         public IFormFile? ClinicImage { get; set; }
         public string? DoctorImagePath { get; set; } = null;
         public string? ClinicImagePath { get; set; } = null;
+        [Required(ErrorMessage = "End date is required")]
+        public DateTime EndDate { get; set; }
         [Required]
         public bool IsActive { get; set; } = true;
         [Required]
