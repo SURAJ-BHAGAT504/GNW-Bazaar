@@ -13,11 +13,11 @@ namespace GNW_Bazzar.Infra.Clients
             return entity.Id;
         }
 
-        public async Task<List<Client>> Get()=>
-            await dbContext.Clients.ToListAsync();
+        public async Task<List<Client>> Get() =>
+            await dbContext.Clients.Include(c => c.subCategoryMasters).ToListAsync();
 
-        public async Task<Client?> Get(long id)=>
-            await dbContext.Clients.AsNoTracking().Where(c => c.Id == id).FirstOrDefaultAsync();
+        public async Task<Client?> Get(long id) =>
+            await dbContext.Clients.Include(c => c.subCategoryMasters).Where(c => c.Id == id).FirstOrDefaultAsync();
 
         public Task Update(Client entity)
         {

@@ -24,7 +24,7 @@ builder.Services.AddScoped<IValidationClient, ValidationClient>();
 
 builder.Services.AddScoped<IConfigurationSettings, ConfigurationSettings>();
 
-builder.Services.AddScoped<IMasterDataService<ClientDto>, ClientService>();
+builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IMasterDataClient<Client>, ClientClient>();
 builder.Services.AddScoped<IMapper<ClientDto, Client>, ClientMapper>();
 builder.Services.AddScoped<IMapper<Client, ClientDto>, ClientDtoMapper>();

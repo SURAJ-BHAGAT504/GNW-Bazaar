@@ -8,10 +8,10 @@ namespace GNW_Bazaar_Clients.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class ClientController(IMasterDataService<ClientDto> clientService) : ControllerBase
+    public class ClientController(IClientService clientService, IWebHostEnvironment env) : ControllerBase
     {
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -44,7 +44,10 @@ namespace GNW_Bazaar_Clients.Controllers
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await clientService.Create(clientDto)));
+                var rootPath = env.WebRootPath
+                  ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+                return Ok(JsonSerializer.Serialize(await clientService.Create(clientDto, rootPath)));
             }
             catch (Exception ex)
             {
@@ -58,7 +61,10 @@ namespace GNW_Bazaar_Clients.Controllers
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await clientService.Update(clientDto)));
+                var rootPath = env.WebRootPath
+                   ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+
+                return Ok(JsonSerializer.Serialize(await clientService.Update(clientDto, rootPath)));
             }
             catch (Exception ex)
             {

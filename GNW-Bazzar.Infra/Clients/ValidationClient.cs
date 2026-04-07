@@ -12,9 +12,6 @@ namespace GNW_Bazzar.Infra.Clients
         public async Task<CategoryMaster?> GetCategoryMaster(string categoryName) =>
             await dbContext.CategoryMasters.AsNoTracking().Where(c => c.CategoryName == categoryName).FirstOrDefaultAsync();
 
-        public async Task<Client?> GetClient(string email) =>
-            await dbContext.Clients.AsNoTracking().Where(c => c.Email == email).FirstOrDefaultAsync();
-
         public async Task<HealthCareCategory?> GetHealthCareCategory(string category) =>
             await dbContext.HealthCareCategories.Where(h => h.Category == category).FirstOrDefaultAsync();
 
