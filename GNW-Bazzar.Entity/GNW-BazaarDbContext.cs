@@ -12,5 +12,6 @@ namespace GNW_Bazzar.Entity
         public DbSet<User> Users { get; set; }
         public DbSet<Otp> Otps { get; set; }
         public DbSet<Sponsor> Sponsors { get; set; }
+        public DbSet<SubCategoryMaster> SubCategoryMasters { get; set; }
     }
 }

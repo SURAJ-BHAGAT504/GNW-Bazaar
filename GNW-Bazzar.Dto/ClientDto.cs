@@ -7,6 +7,8 @@ namespace GNW_Bazzar.Dto
     {
         [Required(ErrorMessage = "Please enter client name"), StringLength(50, ErrorMessage = "Name can`t exceed 50 chars")]
         public string ClientName { get; set; } = default!;
+        [Required(ErrorMessage = "Please enter sub category")]
+        public List<long> SubCategoryMasterIds { get; set; } = new List<long>();
         [Required(ErrorMessage = "Please enter Highlights")]
         public string Highlights { get; set; } = default!;
         [Required(ErrorMessage = "Please Enter your phone number"), MaxLength(10, ErrorMessage = "Phone number can`t exceed 10 digits")]

@@ -11,8 +11,7 @@ using System.Net;
 namespace GNW_Bazaar.Core.Services
 {
     public class ClientService(ILogger<ClientService> logger, IMapper<ClientDto, Client> clientMapper, IValidationClient validationClient, IMasterDataClient<Client> clientDataClient,
-        IMapper<Client, ClientDto> clientDtoMapper,
-        IConfigurationSettings configuration) : IClientService
+        IMapper<Client, ClientDto> clientDtoMapper, IConfigurationSettings configuration, IMasterDataClient<SubCategoryMaster> subCategoryMasterClient) : IClientService
     {
         private const long MaxFileSize = 5 * 1024 * 1024;
 
@@ -49,6 +48,7 @@ namespace GNW_Bazaar.Core.Services
                 var client = new Client
                 {
                     ClientName = clientEntity.ClientName,
+                    subCategoryMasters = new List<SubCategoryMaster>(),
                     Highlights = clientEntity.Highlights,
                     PhoneNumber = clientEntity.PhoneNumber,
                     WhatsAppNumber = clientEntity.WhatsAppNumber,
@@ -60,6 +60,18 @@ namespace GNW_Bazaar.Core.Services
                     CreatedOn = DateTime.Now,
                     UpdatedOn = DateTime.Now
                 };
+
+                if (entity.SubCategoryMasterIds != null && entity.SubCategoryMasterIds.Any())
+                {
+                    foreach (var subCatId in entity.SubCategoryMasterIds)
+                    {
+                        var category = await subCategoryMasterClient.Get(subCatId);
+                        if (category != null)
+                        {
+                            client.subCategoryMasters.Add(category);
+                        }
+                    }
+                }
 
                 await clientDataClient.Create(client);
 
@@ -189,6 +201,20 @@ namespace GNW_Bazaar.Core.Services
                 existingClient.EndDate = entity.EndDate;
                 existingClient.IsActive = entity.IsActive;
                 existingClient.UpdatedOn = DateTime.Now;
+
+                existingClient.subCategoryMasters.Clear();
+
+                if (entity.SubCategoryMasterIds != null && entity.SubCategoryMasterIds.Any())
+                {
+                    foreach (var subCatId in entity.SubCategoryMasterIds)
+                    {
+                        var category = await subCategoryMasterClient.Get(subCatId);
+                        if (category != null)
+                        {
+                            existingClient.subCategoryMasters.Add(category);
+                        }
+                    }
+                }
 
                 await clientDataClient.Update(existingClient);
 
