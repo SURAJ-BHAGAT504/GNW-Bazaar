@@ -352,6 +352,65 @@
     //
     //
     {
+      "DownstreamPathTemplate": "/SubCategoryMaster/GetAll",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/GetAll_SubCategoryMaster",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/SubCategoryMaster/Get?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Get_SubCategoryMaster/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "id",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/SubCategoryMaster/Create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Create_SubCategoryMaster",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/SubCategoryMaster/Update",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Update_SubCategoryMaster",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    //
+    //
+    {
       "DownstreamPathTemplate": "/SignUpAndLogin/SignUp",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

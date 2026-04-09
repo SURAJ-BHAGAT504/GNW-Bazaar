@@ -9,6 +9,7 @@ namespace GNW_Bazaar.Core.Interface.Clients
         public Task<User?> GetUser(string email);
         public Task<Otp?> GetOtp(long userId, string purpose);
         public Task<CategoryMaster?> GetCategoryMaster(string categoryName);
+        public Task<SubCategoryMaster?> GetSubCategoryMaster(string categoryName);
         public Task<List<Sponsor>> GetByClientAndProduct(string clientName, string sponsorProduct);
     }
 }

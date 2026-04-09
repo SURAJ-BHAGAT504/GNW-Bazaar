@@ -2,10 +2,10 @@
 
 namespace GNW_Bazzar.Dto
 {
-    public class SubCategoryMasterDto
+    public class SubCategoryMasterDto : BaseDto
     {
         [Required(ErrorMessage = "Please enter Category"), StringLength(50, ErrorMessage = "Category can`t exceed 50 chars")]
-        public string Category { get; set; } = default!;
+        public string CategoryName { get; set; } = default!;
         [Required]
         public long CategoryMasterId { get; set; }
         [Required]

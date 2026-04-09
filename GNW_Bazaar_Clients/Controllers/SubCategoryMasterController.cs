@@ -8,7 +8,7 @@ namespace GNW_Bazaar_Clients.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class ClientController(IClientService clientService, IWebHostEnvironment env) : ControllerBase
+    public class SubCategoryMasterController(IMasterDataService<SubCategoryMasterDto> subCategoryMasterService) : ControllerBase
     {
         [HttpGet]
         [Authorize]
@@ -16,7 +16,7 @@ namespace GNW_Bazaar_Clients.Controllers
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await clientService.Get()));
+                return Ok(JsonSerializer.Serialize(await subCategoryMasterService.Get()));
             }
             catch (Exception ex)
             {
@@ -30,7 +30,7 @@ namespace GNW_Bazaar_Clients.Controllers
         {
             try
             {
-                return Ok(JsonSerializer.Serialize(await clientService.Get(id)));
+                return Ok(JsonSerializer.Serialize(await subCategoryMasterService.Get(id)));
             }
             catch (Exception ex)
             {
@@ -40,14 +40,11 @@ namespace GNW_Bazaar_Clients.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Create([FromForm] ClientDto clientDto)
+        public async Task<IActionResult> Create(SubCategoryMasterDto subCategoryMasterDto)
         {
             try
             {
-                var rootPath = env.WebRootPath
-                  ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-
-                return Ok(JsonSerializer.Serialize(await clientService.Create(clientDto, rootPath)));
+                return Ok(JsonSerializer.Serialize(await subCategoryMasterService.Create(subCategoryMasterDto)));
             }
             catch (Exception ex)
             {
@@ -57,14 +54,11 @@ namespace GNW_Bazaar_Clients.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> Update([FromForm] ClientDto clientDto)
+        public async Task<IActionResult> Update(SubCategoryMasterDto subCategoryMasterDto)
         {
             try
             {
-                var rootPath = env.WebRootPath
-                   ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-
-                return Ok(JsonSerializer.Serialize(await clientService.Update(clientDto, rootPath)));
+                return Ok(JsonSerializer.Serialize(await subCategoryMasterService.Update(subCategoryMasterDto)));
             }
             catch (Exception ex)
             {

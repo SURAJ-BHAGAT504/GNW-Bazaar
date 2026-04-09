@@ -13,5 +13,11 @@ namespace GNW_Bazzar.Entity
         public DbSet<Otp> Otps { get; set; }
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<SubCategoryMaster> SubCategoryMasters { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SubCategoryMaster>()
+                .ToTable("SubCategoryMasters");
+        }
     }
 }

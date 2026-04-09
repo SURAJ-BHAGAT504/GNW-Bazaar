@@ -5,7 +5,7 @@ namespace GNW_Bazzar.Entity
     public class SubCategoryMaster : Base
     {
         [Required, StringLength(50)]
-        public string Category { get; set; } = default!;
+        public string CategoryName { get; set; } = default!;
         [Required]
         public long CategoryMasterId { get; set; }
         [Required]

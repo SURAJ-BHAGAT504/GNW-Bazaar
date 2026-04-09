@@ -24,6 +24,11 @@ builder.Services.AddScoped<IValidationClient, ValidationClient>();
 
 builder.Services.AddScoped<IConfigurationSettings, ConfigurationSettings>();
 
+builder.Services.AddScoped<IMasterDataService<SubCategoryMasterDto>, SubCategoryMasterService>();
+builder.Services.AddScoped<IMasterDataClient<SubCategoryMaster>, SubCategoryMasterClient>();
+builder.Services.AddScoped<IMapper<SubCategoryMaster, SubCategoryMasterDto>, SubCategoryMasterDtoMapper>();
+builder.Services.AddScoped<IMapper<SubCategoryMasterDto, SubCategoryMaster>, SubCategoryMasterMapper>();
+
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IMasterDataClient<Client>, ClientClient>();
 builder.Services.AddScoped<IMapper<ClientDto, Client>, ClientMapper>();

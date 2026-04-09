@@ -9,35 +9,36 @@ using System.Net;
 
 namespace GNW_Bazaar.Core.Services
 {
-    public class CategoryMasterService(ILogger<CategoryMasterService> logger, IMapper<CategoryMasterDto, CategoryMaster> categoryMasterMapper,
-        IMasterDataClient<CategoryMaster> categoryMasterClient, IValidationClient validationClient, IMapper<CategoryMaster, CategoryMasterDto> categoryMasterDtoMapper) : IMasterDataService<CategoryMasterDto>
+    public class SubCategoryMasterService(ILogger<SubCategoryMasterService> logger, IMapper<SubCategoryMasterDto, SubCategoryMaster> subCategoryMasterMapper,
+        IMapper<SubCategoryMaster, SubCategoryMasterDto> subCategoryMasterDtoMapper, IMasterDataClient<SubCategoryMaster> subCategoryMaterClient,
+        IValidationClient validationClient) : IMasterDataService<SubCategoryMasterDto>
     {
-        public async Task<ResponseDto<long>> Create(CategoryMasterDto entity)
+        public async Task<ResponseDto<long>> Create(SubCategoryMasterDto entity)
         {
             try
             {
                 Validator.ValidateObject(entity, new ValidationContext(entity), true);
 
-                var categoryMasterEntity = categoryMasterMapper.Map(entity);
+                var subCategoryMasterEntity = subCategoryMasterMapper.Map(entity);
 
-                var categoryMasterExist = await validationClient.GetCategoryMaster(entity.CategoryName);
+                var subCategoryMasterExist = await validationClient.GetSubCategoryMaster(entity.CategoryName);
 
-                if (categoryMasterExist != null) throw new Exception("Category master already exists");
+                if (subCategoryMasterExist != null) throw new Exception("Sub category master already exists");
 
                 entity.CreatedOn = DateTime.Now;
 
-                entity.Id = await categoryMasterClient.Create(categoryMasterMapper.Map(entity));
+                entity.Id = await subCategoryMaterClient.Create(subCategoryMasterMapper.Map(entity));
 
                 return new ResponseDto<long>
                 {
                     ResponseCode = (int)HttpStatusCode.OK,
-                    Message = "Category master created successfully",
+                    Message = "Sub category master created successfully",
                     Value = entity.Id
                 };
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "CategoryMasterService.Create");
+                logger.LogError(ex, "SubCategoryMasterService.Create");
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.InternalServerError,
@@ -46,29 +47,29 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
-        public async Task<ResponseDto<List<CategoryMasterDto>>> Get()
+        public async Task<ResponseDto<List<SubCategoryMasterDto>>> Get()
         {
             try
             {
-                var categoryMaster = await categoryMasterClient.Get();
+                var subCategoryMaster = await subCategoryMaterClient.Get();
 
-                var categoryMasterDtos = new List<CategoryMasterDto>();
+                var subCategoryMasterDtos = new List<SubCategoryMasterDto>();
 
-                if (categoryMaster != null && categoryMaster.Any())
+                if (subCategoryMaster != null && subCategoryMaster.Any())
                 {
-                    categoryMasterDtos = categoryMaster.Select(categoryMaster => categoryMasterDtoMapper.Map(categoryMaster)).ToList();
+                    subCategoryMasterDtos = subCategoryMaster.Select(subCategoryMaster => subCategoryMasterDtoMapper.Map(subCategoryMaster)).ToList();
                 }
 
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.OK,
-                    Message = "Category Masters fetched successfully",
-                    Value = categoryMasterDtos
+                    Message = "Sub category master fetched successfully",
+                    Value = subCategoryMasterDtos
                 };
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "CategoryMasterService.Get");
+                logger.LogError(ex, "SubCategoryMasterService.Get");
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.InternalServerError,
@@ -77,26 +78,26 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
-        public async Task<ResponseDto<CategoryMasterDto?>> Get(long id)
+        public async Task<ResponseDto<SubCategoryMasterDto?>> Get(long id)
         {
             try
             {
                 if (id == 0) throw new Exception("Please enter valid Id");
 
-                var categoryMaster = await categoryMasterClient.Get(id) ?? throw new Exception($"No category master found with Id {id}");
+                var subCategoryMaster = await subCategoryMaterClient.Get(id) ?? throw new Exception($"No category master found with Id {id}");
 
-                var categoryMasterDto = categoryMasterDtoMapper.Map(categoryMaster);
+                var subCategoryMasterDto = subCategoryMasterDtoMapper.Map(subCategoryMaster);
 
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.OK,
-                    Message = "Category master fetched successfully",
-                    Value = categoryMasterDto
+                    Message = "Sub category master fetched successfully",
+                    Value = subCategoryMasterDto
                 };
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "CategoryMasterService.Get");
+                logger.LogError(ex, "SubCategoryMasterService.Get");
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.InternalServerError,
@@ -105,7 +106,7 @@ namespace GNW_Bazaar.Core.Services
             }
         }
 
-        public async Task<ResponseDto<bool>> Update(CategoryMasterDto entity)
+        public async Task<ResponseDto<bool>> Update(SubCategoryMasterDto entity)
         {
             try
             {
@@ -115,19 +116,18 @@ namespace GNW_Bazaar.Core.Services
 
                 entity.UpdatedOn = DateTime.Now;
 
-                await categoryMasterClient.Update(categoryMasterMapper.Map(entity));
+                await subCategoryMaterClient.Update(subCategoryMasterMapper.Map(entity));
 
-                return new ResponseDto<bool>()
+                return new ResponseDto<bool>
                 {
                     ResponseCode = (int)HttpStatusCode.OK,
-                    Message = "Category master updated successfully",
+                    Message = "Sub category master updated successfully",
                     Value = true
                 };
-
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "CategoryMasterService.Update");
+                logger.LogError(ex, "SubCategoryMasterService.Update");
                 return new()
                 {
                     ResponseCode = (int)HttpStatusCode.InternalServerError,
