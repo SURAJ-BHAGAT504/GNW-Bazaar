@@ -11,7 +11,7 @@ using System.Net;
 namespace GNW_Bazaar.Core.Services
 {
     public class ClientService(ILogger<ClientService> logger, IMapper<ClientDto, Client> clientMapper, IValidationClient validationClient, IMasterDataClient<Client> clientDataClient,
-        IMapper<Client, ClientDto> clientDtoMapper, IConfigurationSettings configuration, IMasterDataClient<SubCategoryMaster> subCategoryMasterClient) : IClientService
+        IMapper<Client, ClientDto> clientDtoMapper, IConfigurationSettings configuration, ISubCategoryMasterClient subCategoryMasterClient) : IClientService
     {
         private const long MaxFileSize = 5 * 1024 * 1024;
 

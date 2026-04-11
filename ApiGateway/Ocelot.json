@@ -384,6 +384,25 @@
     },
     //
     {
+      "DownstreamPathTemplate": "/SubCategoryMaster/GetByMasterCategory?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Get_SubCategoryMasterByCategoryMaster/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "id",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
       "DownstreamPathTemplate": "/SubCategoryMaster/Create",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

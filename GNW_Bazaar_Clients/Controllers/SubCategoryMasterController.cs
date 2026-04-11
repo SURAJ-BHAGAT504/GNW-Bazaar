@@ -8,7 +8,7 @@ namespace GNW_Bazaar_Clients.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class SubCategoryMasterController(IMasterDataService<SubCategoryMasterDto> subCategoryMasterService) : ControllerBase
+    public class SubCategoryMasterController(ISubCategoryMasterService subCategoryMasterService) : ControllerBase
     {
         [HttpGet]
         [Authorize]
@@ -31,6 +31,20 @@ namespace GNW_Bazaar_Clients.Controllers
             try
             {
                 return Ok(JsonSerializer.Serialize(await subCategoryMasterService.Get(id)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        //[Authorize]
+        public async Task<IActionResult> GetByMasterCategory(long id)
+        {
+            try
+            {
+                return Ok(JsonSerializer.Serialize(await subCategoryMasterService.GetByMasterCategory(id)));
             }
             catch (Exception ex)
             {

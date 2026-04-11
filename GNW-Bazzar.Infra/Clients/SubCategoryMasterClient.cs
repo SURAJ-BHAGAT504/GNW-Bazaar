@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GNW_Bazzar.Infra.Clients
 {
-    public class SubCategoryMasterClient(GNW_BazaarDbContext dbContext) : IMasterDataClient<SubCategoryMaster>
+    public class SubCategoryMasterClient(GNW_BazaarDbContext dbContext) : ISubCategoryMasterClient
     {
         public async Task<long> Create(SubCategoryMaster entity)
         {
@@ -19,10 +19,13 @@ namespace GNW_Bazzar.Infra.Clients
         public async Task<SubCategoryMaster?> Get(long id) =>
             await dbContext.SubCategoryMasters.Where(h => h.Id == id).FirstOrDefaultAsync();
 
+        public async Task<List<SubCategoryMaster>> GetByMasterCategory(long id) =>
+            await dbContext.SubCategoryMasters.Where(h => h.CategoryMasterId == id).ToListAsync();
+
         public Task Update(SubCategoryMaster entity)
         {
             dbContext.SubCategoryMasters.Update(entity);
-            return dbContext.SaveChangesAsync();    
+            return dbContext.SaveChangesAsync();
         }
     }
 }

@@ -10,8 +10,8 @@ using System.Net;
 namespace GNW_Bazaar.Core.Services
 {
     public class SubCategoryMasterService(ILogger<SubCategoryMasterService> logger, IMapper<SubCategoryMasterDto, SubCategoryMaster> subCategoryMasterMapper,
-        IMapper<SubCategoryMaster, SubCategoryMasterDto> subCategoryMasterDtoMapper, IMasterDataClient<SubCategoryMaster> subCategoryMaterClient,
-        IValidationClient validationClient) : IMasterDataService<SubCategoryMasterDto>
+        IMapper<SubCategoryMaster, SubCategoryMasterDto> subCategoryMasterDtoMapper, ISubCategoryMasterClient subCategoryMaterClient,
+        IValidationClient validationClient) : ISubCategoryMasterService
     {
         public async Task<ResponseDto<long>> Create(SubCategoryMasterDto entity)
         {
@@ -93,6 +93,39 @@ namespace GNW_Bazaar.Core.Services
                     ResponseCode = (int)HttpStatusCode.OK,
                     Message = "Sub category master fetched successfully",
                     Value = subCategoryMasterDto
+                };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "SubCategoryMasterService.Get");
+                return new()
+                {
+                    ResponseCode = (int)HttpStatusCode.InternalServerError,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<ResponseDto<List<SubCategoryMasterDto>>> GetByMasterCategory(long id)
+        {
+            try
+            {
+                if (id == 0) throw new Exception("Please enter valid Id");
+
+                var subCategoryMasterDtos = new List<SubCategoryMasterDto>();
+
+                var subCategoryMaster = await subCategoryMaterClient.GetByMasterCategory(id) ?? throw new Exception($"No sub category master found with master category Id {id}");
+
+                if (subCategoryMaster != null && subCategoryMaster.Any())
+                {
+                    subCategoryMasterDtos = subCategoryMaster.Select(subCategoryMaster => subCategoryMasterDtoMapper.Map(subCategoryMaster)).ToList();
+                }
+
+                return new()
+                {
+                    ResponseCode = (int)HttpStatusCode.OK,
+                    Message = "Sub category master fetched successfully",
+                    Value = subCategoryMasterDtos
                 };
             }
             catch (Exception ex)
