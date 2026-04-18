@@ -247,6 +247,25 @@
     },
     //
     {
+      "DownstreamPathTemplate": "/Sponsor/GetSponsorsByCategoryMaster?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/GetByCategoryMaster_Sponsor/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "id",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
       "DownstreamPathTemplate": "/Sponsor/Create",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -557,6 +576,19 @@
         }
       ],
       "UpstreamPathTemplate": "/SponsorImage/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    //
+    {
+      "DownstreamPathTemplate": "/ClientImage/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site6.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/ClientImage/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     }
   ]

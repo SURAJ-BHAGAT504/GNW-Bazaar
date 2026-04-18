@@ -52,6 +52,20 @@ namespace GNW_Bazaar_Clients.Controllers
             }
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetSponsorsByCategoryMaster(long id)
+        {
+            try
+            {
+                return Ok(JsonSerializer.Serialize(await sponsorService.GetSponsorsByCategoryMaster(id)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create([FromForm] SponsorDto sponsorDto)

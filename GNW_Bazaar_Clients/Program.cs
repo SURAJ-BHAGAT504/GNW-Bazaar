@@ -35,7 +35,7 @@ builder.Services.AddScoped<IMapper<ClientDto, Client>, ClientMapper>();
 builder.Services.AddScoped<IMapper<Client, ClientDto>, ClientDtoMapper>();
 
 builder.Services.AddScoped<ISponsorService, SponsorService>();
-builder.Services.AddScoped<IMasterDataClient<Sponsor>, SponsorClient>();
+builder.Services.AddScoped<ISponsorClient, SponsorClient>();
 builder.Services.AddScoped<IMapper<Sponsor, SponsorDto>, SponsorDtoMapper>();
 builder.Services.AddScoped<IMapper<SponsorDto, Sponsor>, SponsorMapper>();
 

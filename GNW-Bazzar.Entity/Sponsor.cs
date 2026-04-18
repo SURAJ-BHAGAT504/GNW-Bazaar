@@ -8,6 +8,7 @@ namespace GNW_Bazzar.Entity
         public string ClientName { get; set; } = default!;
         [Required]
         public string Description { get; set; } = default!;
+        public long? CategoryMasterId { get; set; }
         [Required, Phone]
         public string PhoneNumber { get; set; } = default!;
         public string SponsorFile { get; set; } = default!;
@@ -26,5 +27,7 @@ namespace GNW_Bazzar.Entity
         [Required]
         public DateTime CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
+
+        public CategoryMaster CategoryMaster { get; set; } = default!;
     }
 }

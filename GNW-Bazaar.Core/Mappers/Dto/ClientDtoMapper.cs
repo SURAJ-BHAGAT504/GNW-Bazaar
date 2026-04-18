@@ -10,6 +10,7 @@ namespace GNW_Bazaar.Core.Mappers.Dto
         {
             Id = input.Id,
             ClientName = input.ClientName,
+            SubCategoryMasterIds = input.subCategoryMasters.Select(x => x.Id).ToList() ?? new List<long>(),
             Highlights = input.Highlights,
             PhoneNumber = input.PhoneNumber,
             WhatsAppNumber = input.WhatsAppNumber,

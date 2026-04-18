@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GNW_Bazzar.Infra.Clients
 {
-    public class SponsorClient(GNW_BazaarDbContext dbContext) : IMasterDataClient<Sponsor>
+    public class SponsorClient(GNW_BazaarDbContext dbContext) : ISponsorClient
     {
         public async Task<long> Create(Sponsor entity)
         {
@@ -18,6 +18,9 @@ namespace GNW_Bazzar.Infra.Clients
 
         public async Task<Sponsor?> Get(long id) =>
             await dbContext.Sponsors.AsNoTracking().Where(s => s.Id == id).FirstOrDefaultAsync();
+
+        public async Task<List<Sponsor>> GetSponsorsByMasterCategory(long categoryMasterId) =>
+            await dbContext.Sponsors.AsNoTracking().Where(c => c.CategoryMasterId == categoryMasterId).ToListAsync();
 
         public async Task Update(Sponsor entity)
         {

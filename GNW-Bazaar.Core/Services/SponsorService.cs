@@ -10,7 +10,7 @@ using System.Net;
 
 namespace GNW_Bazaar.Core.Services
 {
-    public class SponsorService(ILogger<SponsorService> logger, IMapper<SponsorDto, Sponsor> sponsorMapper, IMasterDataClient<Sponsor> sponsorClient, IMapper<Sponsor, SponsorDto> sponsorDtoMapper,
+    public class SponsorService(ILogger<SponsorService> logger, IMapper<SponsorDto, Sponsor> sponsorMapper, ISponsorClient sponsorClient, IMapper<Sponsor, SponsorDto> sponsorDtoMapper,
         IConfigurationSettings configuration, IValidationClient validationClient) : ISponsorService
     {
         private const long MaxFileSize = 5 * 1024 * 1024;
@@ -60,6 +60,7 @@ namespace GNW_Bazaar.Core.Services
                 {
                     ClientName = entity.ClientName,
                     Description = entity.Description,
+                    CategoryMasterId = entity.CategoryMasterId,
                     PhoneNumber = entity.PhoneNumber,
                     SponsorType = entity.SponsorType,
                     SponsorFile = sponsorFilePath,
@@ -93,9 +94,12 @@ namespace GNW_Bazaar.Core.Services
             {
                 var sponsors = await sponsorClient.Get();
 
+                var allowedTypes = new[] { "TOP BANNER", "LOWER BANNER" };
+
                 var activeSponsors = sponsors
                     .Where(s => DateTime.Now >= s.StartDate &&
-                                DateTime.Now <= s.EndDate)
+                                DateTime.Now <= s.EndDate &&
+                                allowedTypes.Contains(s.SponsorType))
                     .ToList();
 
                 var sponsorDtos = activeSponsors.Select(s => sponsorDtoMapper.Map(s)).ToList();
@@ -202,6 +206,7 @@ namespace GNW_Bazaar.Core.Services
 
                 existingSponsor.ClientName = entity.ClientName;
                 existingSponsor.Description = entity.Description;
+                existingSponsor.CategoryMasterId = entity.CategoryMasterId;
                 existingSponsor.PhoneNumber = entity.PhoneNumber;
                 existingSponsor.SponsorType = entity.SponsorType;
                 existingSponsor.SponsorProduct = entity.SponsorProduct;
@@ -330,6 +335,34 @@ namespace GNW_Bazaar.Core.Services
             {
                 logger.LogError(ex, "SponsorService.GetByAdmin");
                 return new() { ResponseCode = (int)HttpStatusCode.InternalServerError, Message = ex.Message };
+            }
+        }
+
+        public async Task<ResponseDto<List<SponsorDto>>> GetSponsorsByCategoryMaster(long categoryMasterId)
+        {
+            try
+            {
+                if (categoryMasterId <= 0) throw new Exception("Please enter a valid Category Master ID");
+
+                var sponsors = await sponsorClient.GetSponsorsByMasterCategory(categoryMasterId) ?? throw new Exception($"No sponsor found with Category Master Id {categoryMasterId}");
+
+                var sponsorDtos = sponsors?.Select(s => sponsorDtoMapper.Map(s)).ToList() ?? new List<SponsorDto>();
+
+                return new ResponseDto<List<SponsorDto>>
+                {
+                    ResponseCode = (int)HttpStatusCode.OK,
+                    Message = "Sponsors fetched successfully",
+                    Value = sponsorDtos
+                };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "SponsorService.GetSponsorByCategoryMaster");
+                return new()
+                {
+                    ResponseCode = (int)HttpStatusCode.InternalServerError,
+                    Message = ex.Message
+                };
             }
         }
     }

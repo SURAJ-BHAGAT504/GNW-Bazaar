@@ -10,6 +10,7 @@ namespace GNW_Bazaar.Core.Mappers.Entity
         {
             Id = input.Id,
             ClientName = input.ClientName,
+            subCategoryMasters = new List<SubCategoryMaster>(),
             Highlights = input.Highlights,
             PhoneNumber = input.PhoneNumber,
             WhatsAppNumber = input.WhatsAppNumber,

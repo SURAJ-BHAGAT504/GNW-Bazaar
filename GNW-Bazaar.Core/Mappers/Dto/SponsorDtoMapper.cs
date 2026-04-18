@@ -11,6 +11,7 @@ namespace GNW_Bazaar.Core.Mappers.Dto
             Id = input.Id,
             ClientName = input.ClientName,
             Description = input.Description,
+            CategoryMasterId = input.CategoryMasterId,
             PhoneNumber = input.PhoneNumber,
             SponsorFilePath = input.SponsorFile,
             SponsorProduct = input.SponsorProduct,

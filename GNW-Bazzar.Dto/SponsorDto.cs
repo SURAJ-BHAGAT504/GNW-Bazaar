@@ -9,6 +9,7 @@ namespace GNW_Bazzar.Dto
         public string ClientName { get; set; } = default!;
         [Required(ErrorMessage = "Please enter sponsor description")]
         public string Description { get; set; } = default!;
+        public long? CategoryMasterId { get; set; }
         [Required(ErrorMessage = "Please Enter client phone number"), MaxLength(10, ErrorMessage = "Phone number can`t exceed 10 digits")]
         public string PhoneNumber { get; set; } = default!;
         public IFormFile? SponsorFile { get; set; } = default!;
