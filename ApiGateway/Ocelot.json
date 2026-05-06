@@ -541,6 +541,25 @@
     },
     //
     {
+      "DownstreamPathTemplate": "/User/Get?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gnwbazaar-002-site3.qtempurl.com",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Get_User/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamQueryStrings": [
+        {
+          "Name": "id",
+          "Values": [ "{id}" ]
+        }
+      ]
+    },
+    //
+    {
       "DownstreamPathTemplate": "/DoctorImage/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

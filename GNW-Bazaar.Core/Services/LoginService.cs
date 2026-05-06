@@ -90,10 +90,8 @@ namespace GNW_Bazaar.Core.Services
                     };
                 }
 
-                var userDto = userDtoMapper.Map(user);
-
-                var passwordHasher = new PasswordHasher<UserDto>();
-                var verificationResult = passwordHasher.VerifyHashedPassword(userDto, userDto.Password, loginDto.Password);
+                var passwordHasher = new PasswordHasher<User>();
+                var verificationResult = passwordHasher.VerifyHashedPassword(user, user.Password, loginDto.Password);
 
                 if (verificationResult == PasswordVerificationResult.Failed)
                 {
@@ -104,6 +102,8 @@ namespace GNW_Bazaar.Core.Services
                         Value = null
                     };
                 }
+
+                var userDto = userDtoMapper.Map(user);
 
                 var accessToken = tokenService.GenerateAccessToken(userDto);
                 var refreshTokenEntity = tokenService.GenerateRefreshToken(userDto.Id);
